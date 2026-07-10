@@ -68,12 +68,13 @@ If you need sample database content for development, add a sanitized sample unde
 
 Additional documentation is available in the `docs/` folder, including application and user guides. The `Help/` folder contains the built-in HTML help system used by the application.
 
-## Open Source Status
+## License
 
-This project is being prepared for open source release.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-A license file should be added before public use, redistribution, or modification is encouraged. If the goal is broad community use with minimal restrictions, the MIT License is a common choice.
+Copyright (c) 2026 Tommy Martin.
 
 ## Author
 
 Tommy Martin
+
