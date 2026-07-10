@@ -44,13 +44,13 @@ Open `Carillon.dproj` in RAD Studio, choose the desired Windows target, and buil
 
 ```text
 .
-??? Carillon.dpr / Carillon.dproj   Main Delphi project files
-??? *.pas / *.fmx                   Application source and form files
-??? Help/                           Built-in HTML help system
-??? Images/                         Image assets used by documentation or the app
-??? docs/                           Application guides and generated documentation
-??? .gitignore                      Files intentionally excluded from Git
-??? .gitattributes                  Git text/binary handling rules
+|-- Carillon.dpr / Carillon.dproj   Main Delphi project files
+|-- *.pas / *.fmx                   Application source and form files
+|-- Help/                           Built-in HTML help system
+|-- Images/                         Image assets used by documentation or the app
+|-- docs/                           Application guides and generated documentation
+|-- .gitignore                      Files intentionally excluded from Git
+`-- .gitattributes                  Git text/binary handling rules
 ```
 
 ## Files Not Included in Git
@@ -77,4 +77,5 @@ Copyright (c) 2026 Tommy Martin.
 ## Author
 
 Tommy Martin
+
 
