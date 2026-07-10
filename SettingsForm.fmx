@@ -1,0 +1,497 @@
+object SettingsMain: TSettingsMain
+  Left = 0
+  Top = 0
+  Caption = 'System Settings'
+  ClientHeight = 629
+  ClientWidth = 992
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  OnCreate = FormCreate
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object lblSystemSettings: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 401.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 181.000000000000000000
+    Size.Height = 35.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 26.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+    TextSettings.WordWrap = False
+    Text = 'System Settings'
+    TabOrder = 3
+  end
+  object Label1: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 141.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 142.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'Organization Name:'
+    TabOrder = 6
+  end
+  object lblLogOnOff: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 168.000000000000000000
+    Position.Y = 139.000000000000000000
+    Size.Width = 114.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'Transaction Log:'
+    TabOrder = 11
+  end
+  object lblLogNote: TLabel
+    StyledSettings = []
+    Position.X = 386.000000000000000000
+    Position.Y = 141.000000000000000000
+    Size.Width = 241.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    Text = 
+      'Put check in box to turn on logging. Uncheck box to turn off log' +
+      'ging.'
+    TabOrder = 13
+  end
+  object lblLogStatus: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 314.000000000000000000
+    Position.Y = 141.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'On/Off'
+    TabOrder = 20
+  end
+  object lblAshWedBeg: TLabel
+    StyledSettings = []
+    Position.X = 273.000000000000000000
+    Position.Y = 364.000000000000000000
+    Size.Width = 123.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Trailing
+    Text = 'Ash Wednesday:'
+    TabOrder = 21
+  end
+  object lblOtherStart: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 303.000000000000000000
+    Position.Y = 510.000000000000000000
+    Size.Width = 94.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Trailing
+    TextSettings.WordWrap = False
+    Text = 'Funeral Dates:'
+    TabOrder = 22
+  end
+  object lblAllSouls: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 306.000000000000000000
+    Position.Y = 463.000000000000000000
+    Size.Width = 90.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Trailing
+    TextSettings.WordWrap = False
+    Text = 'All Souls Day:'
+    TabOrder = 23
+  end
+  object Label2: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 386.000000000000000000
+    Position.Y = 273.000000000000000000
+    Size.Width = 254.000000000000000000
+    Size.Height = 35.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 26.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'Liturgical Silence Days'
+    TabOrder = 24
+  end
+  object lblHolyThuBeg: TLabel
+    StyledSettings = []
+    Position.X = 282.000000000000000000
+    Position.Y = 410.000000000000000000
+    Size.Width = 114.000000000000000000
+    Size.Height = 54.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Trailing
+    Text = 'Holy Thursday thru Saturday:'
+    TabOrder = 25
+  end
+  object Label3: TLabel
+    StyledSettings = []
+    Position.X = 728.000000000000000000
+    Position.Y = 291.000000000000000000
+    Size.Width = 240.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    Text = 
+      'Put check in box to enable silencing.'#13#10'Uncheck box to disable si' +
+      'lencing.'
+    TabOrder = 26
+  end
+  object lblBeginDate: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 439.000000000000000000
+    Position.Y = 340.000000000000000000
+    Size.Width = 27.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'Start'
+    TabOrder = 27
+  end
+  object lblEndDate: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 564.000000000000000000
+    Position.Y = 340.000000000000000000
+    Size.Width = 22.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'End'
+    TabOrder = 30
+  end
+  object Label4: TLabel
+    StyledSettings = []
+    Position.X = 314.000000000000000000
+    Position.Y = 545.000000000000000000
+    Size.Width = 87.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Trailing
+    Text = 'Start/End Times:'
+    TabOrder = 31
+  end
+  object edOrgName: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 0
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 291.000000000000000000
+    Position.Y = 94.000000000000000000
+    Hint = 'Enter the name of your organization,.'
+    Size.Width = 415.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object btnCloseSettings: TButton
+    StyledSettings = [Other]
+    Position.X = 818.000000000000000000
+    Position.Y = 519.000000000000000000
+    Size.Width = 96.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 28
+    Text = 'Close'
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.FontColor = claMaroon
+    OnClick = btnCloseSettingsClick
+  end
+  object chkLogOnOff: TCheckBox
+    StyledSettings = [Other]
+    Position.X = 291.000000000000000000
+    Position.Y = 139.000000000000000000
+    Size.Width = 31.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    TextSettings.Font.Size = 15.000000000000000000
+  end
+  object dtAshWed: TDateEdit
+    Date = 45767.000000000000000000
+    Position.X = 409.000000000000000000
+    Position.Y = 367.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Style, FontColor]
+    TabOrder = 5
+    TextSettings.Font.Size = 15.000000000000000000
+  end
+  object dtHolySatEnd: TDateEdit
+    Date = 45767.000000000000000000
+    Position.X = 530.000000000000000000
+    Position.Y = 415.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Style, FontColor]
+    TabOrder = 7
+    TextSettings.Font.Size = 15.000000000000000000
+  end
+  object dtOtherStart: TDateEdit
+    Date = 45767.000000000000000000
+    Position.X = 409.000000000000000000
+    Position.Y = 510.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Style, FontColor]
+    TabOrder = 12
+    TextSettings.Font.Size = 15.000000000000000000
+  end
+  object dtOtherEnd: TDateEdit
+    Date = 45767.000000000000000000
+    Position.X = 530.000000000000000000
+    Position.Y = 510.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Style, FontColor]
+    TabOrder = 19
+    TextSettings.Font.Size = 15.000000000000000000
+  end
+  object dtAllSouls: TDateEdit
+    Date = 45767.000000000000000000
+    Position.X = 409.000000000000000000
+    Position.Y = 463.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Style, FontColor]
+    TabOrder = 9
+    TextSettings.Font.Size = 15.000000000000000000
+  end
+  object chkEnableSilence: TCheckBox
+    StyledSettings = []
+    IsChecked = True
+    Position.X = 705.000000000000000000
+    Position.Y = 278.000000000000000000
+    Size.Width = 17.000000000000000000
+    Size.Height = 52.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = True
+  end
+  object BtnRecalcEaster: TButton
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 134.000000000000000000
+    Position.Y = 413.000000000000000000
+    Size.Width = 129.000000000000000000
+    Size.Height = 45.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 15
+    Text = 'Recalculate Easter and All Souls Dates'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = True
+    OnClick = BtnRecalcEasterClick
+  end
+  object dtHolyThuBeg: TDateEdit
+    Date = 45767.000000000000000000
+    OnClosePicker = dtHolyThuBegChange
+    Position.X = 409.000000000000000000
+    Position.Y = 415.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, Style, FontColor]
+    TabOrder = 4
+    TextSettings.Font.Size = 15.000000000000000000
+  end
+  object btnClearOtherDates: TButton
+    StyledSettings = []
+    Hint = 'Click to reset the Other Date Fields'
+    Position.X = 156.000000000000000000
+    Position.Y = 510.000000000000000000
+    Size.Width = 107.000000000000000000
+    Size.Height = 46.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 14
+    Text = 'Reset Funeral Date Fields'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = True
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = btnClearOtherDatesClick
+  end
+  object DBNavigator1: TBindNavigator
+    Position.X = 810.000000000000000000
+    Position.Y = 441.000000000000000000
+    Size.Width = 112.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 16
+    VisibleButtons = [nbPost, nbCancel]
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object lblNavigatorSave: TLabel
+    StyledSettings = []
+    Position.X = 810.000000000000000000
+    Position.Y = 421.000000000000000000
+    Size.Width = 56.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Save'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object lblNavigatorCancel: TLabel
+    StyledSettings = []
+    Position.X = 866.000000000000000000
+    Position.Y = 421.000000000000000000
+    Size.Width = 56.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Cancel'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object btnSaveSettings: TButton
+    StyledSettings = [Other]
+    Position.X = 818.000000000000000000
+    Position.Y = 439.000000000000000000
+    Size.Width = 96.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 17
+    Visible = False
+    Text = 'Save All'
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.FontColor = claMaroon
+  end
+  object btnCancelSettings: TButton
+    StyledSettings = [Other]
+    Position.X = 818.000000000000000000
+    Position.Y = 479.000000000000000000
+    Size.Width = 96.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 18
+    Visible = False
+    Text = 'Cancel All'
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.FontColor = claMaroon
+  end
+  object tkOtherStartTime: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 8
+    MaxLength = 8
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 409.000000000000000000
+    Position.Y = 550.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    OnExit = tkOtherStartTimeExit
+  end
+  object tkOtherEndTime: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 10
+    MaxLength = 8
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 530.000000000000000000
+    Position.Y = 550.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    OnExit = tkOtherEndTimeExit
+  end
+  object setMainMenu1: TMenuBar
+    Size.Width = 992.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 29
+    object File1: TMenuItem
+      Text = 'File'
+      object Exit1: TMenuItem
+        Locked = True
+        Text = 'Exit'
+        OnClick = Exit1Click
+      end
+    end
+  end
+  object DirectoryDialog1: TOpenDialog
+    InitialDir = 'c:/random_songs'
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 928
+    Top = 8
+  end
+  object SilenceTimer: TTimer
+    OnTimer = SilenceTimerTimer
+    Left = 928
+    Top = 72
+  end
+  object setFDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=./databases/carillon.db'
+      'StringFormat=Choose'
+      'DriverID=SQLite'
+      'GUIDFormat=Binary'
+      'LockingMode=Normal')
+    LoginPrompt = False
+    Left = 136
+    Top = 8
+  end
+  object setFDQuery1: TFDQuery
+    FieldOptions.BlobDisplayValue = dvFullText
+    Connection = setFDConnection1
+    SQL.Strings = (
+      'SELECT * FROM PL_SETTINGS;')
+    Left = 240
+    Top = 8
+  end
+  object setDataSource1: TDataSource
+    DataSet = setFDQuery1
+    Left = 824
+    Top = 8
+  end
+end

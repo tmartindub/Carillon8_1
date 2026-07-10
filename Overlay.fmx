@@ -1,0 +1,15 @@
+object frmOverlay: TfrmOverlay
+  Left = 0
+  Top = 0
+  BorderStyle = None
+  ClientHeight = 901
+  ClientWidth = 1600
+  Position = ScreenCenter
+  Transparency = True
+  FormStyle = StayOnTop
+  WindowState = wsMaximized
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  DesignerMasterStyle = 0
+end

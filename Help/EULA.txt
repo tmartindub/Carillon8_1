@@ -1,0 +1,72 @@
+End User License Agreement (EULA)
+
+Westminster Chimes and Carillon Bells, version 6.5
+
+
+
+Grant of License:
+
+Westminster Chimes and Carillon Bells ("Licensor") grants you, the end user ("Licensee"), a worldwide, royalty-free, non-exclusive, non-transferable license to use, copy, modify, and distribute Westminster Chimes and Carillon Bells for non-commercial purposes, in accordance with the terms of this license. This license is granted for the duration of the copyright in Westminster Chimes and Carillon Bells.
+
+
+
+
+Scope of License:
+1.Use: Licensee is permitted to use Westminster Chimes and Carillon Bells on any number of devices for non-commercial purposes.
+2.Copy: Licensee may make an unlimited number of copies of Westminster Chimes and Carillon Bells for non-commercial use.
+3.Modify: Licensee is permitted to modify Westminster Chimes and Carillon Bells, provided that the modifications are also for non-commercial purposes and distributed under the same license terms as the original software.
+4.Distribute: Licensee may distribute the original or modified versions of Westminster Chimes and Carillon Bells provided that:
+
+a. All copyright notices and attribution within the software, including those for the original author and license information, are retained.
+
+b. The distribution is for non-commercial purposes.
+
+c. The software is distributed under the same license terms as the original software.
+
+
+
+
+Attribution:
+
+Licensee must retain all copyright notices and attribution within the software, including those for the original author and license information. Any modified versions of Westminster Chimes and Carillon Bells must clearly indicate that they have been modified and provide details of the modifications.
+
+
+
+
+Modification and Distribution:
+
+Licensee is permitted to modify and distribute the software, provided that such modifications are also non-commercial and distributed under the same license terms as the original software.
+
+
+
+
+No Warranty:
+
+Licensor provides Westminster Chimes and Carillon Bells "as is" without any warranties, express or implied, regarding its functionality or suitability. Licensee uses the software at their own risk.
+
+
+
+
+Limitation of Liability:
+
+In no event shall Licensor be liable for any damages arising from the use of Westminster Chimes and Carillon Bells, including but not limited to direct, indirect, incidental, or consequential damages.
+
+
+Compliance with Laws:
+
+Licensee must comply with all applicable laws and regulations in their use, copying, modification, and distribution of Westminster Chimes and Carillon Bells.
+
+
+Termination:
+
+This license will terminate automatically if Licensee fails to comply with the terms and conditions of this EULA. Upon termination, Licensee must cease all use, copying, modification, and distribution of Westminster Chimes and Carillon Bells and must destroy all copies of the software in their possession or control.
+
+Acceptance:
+
+By clicking "Accept" or installing Westminster Chimes and Carillon Bells, Licensee signifies their agreement to these terms and conditions. If Licensee does not agree to these terms, they must not install or use Westminster Chimes and Carillon Bells.
+
+Created with the Personal Edition of HelpNDoc: Maximize Your Documentation Capabilities with HelpNDoc's User-Friendly UI
+
+
+Copyright © 2026 by Westminster Chimes and Carillon Bells. All Rights Reserved. 
+

@@ -1,0 +1,734 @@
+object frmRandomDirectory: TfrmRandomDirectory
+  Left = 0
+  Top = 0
+  Caption = 'Random Music Directory Rotation'
+  ClientHeight = 590
+  ClientWidth = 900
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  OnActivate = FormActivate
+  DesignerMasterStyle = 0
+  object lblHdr: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 160.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 477.000000000000000000
+    Size.Height = 43.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 32.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'Random Music Directory Rotation'
+    TabOrder = 30
+  end
+  object lblFromDate2: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 530.000000000000000000
+    Position.Y = 256.000000000000000000
+    Size.Width = 30.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'From'
+    TabOrder = 31
+  end
+  object lblToDate2: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 654.000000000000000000
+    Position.Y = 256.000000000000000000
+    Size.Width = 14.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'To'
+    TabOrder = 32
+  end
+  object lblFromDate3: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 530.000000000000000000
+    Position.Y = 301.000000000000000000
+    Size.Width = 30.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'From'
+    TabOrder = 33
+  end
+  object lblToDate3: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 654.000000000000000000
+    Position.Y = 301.000000000000000000
+    Size.Width = 14.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'To'
+    TabOrder = 34
+  end
+  object lblFromDate4: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 530.000000000000000000
+    Position.Y = 346.000000000000000000
+    Size.Width = 30.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'From'
+    TabOrder = 35
+  end
+  object lblToDate4: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 654.000000000000000000
+    Position.Y = 346.000000000000000000
+    Size.Width = 14.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'To'
+    TabOrder = 36
+  end
+  object lblFromDate5: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 530.000000000000000000
+    Position.Y = 391.000000000000000000
+    Size.Width = 30.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'From'
+    TabOrder = 37
+  end
+  object lblToDate5: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 654.000000000000000000
+    Position.Y = 391.000000000000000000
+    Size.Width = 14.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'To'
+    TabOrder = 38
+  end
+  object lblNum1: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 58.000000000000000000
+    Position.Y = 211.000000000000000000
+    Size.Width = 13.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.WordWrap = False
+    Text = '1.'
+    TabOrder = 39
+  end
+  object lblNum2: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 58.000000000000000000
+    Position.Y = 256.000000000000000000
+    Size.Width = 13.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.WordWrap = False
+    Text = '2.'
+    TabOrder = 40
+  end
+  object lblNum3: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 58.000000000000000000
+    Position.Y = 301.000000000000000000
+    Size.Width = 13.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.WordWrap = False
+    Text = '3.'
+    TabOrder = 41
+  end
+  object lblNum4: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 58.000000000000000000
+    Position.Y = 346.000000000000000000
+    Size.Width = 13.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.WordWrap = False
+    Text = '4.'
+    TabOrder = 42
+  end
+  object lblNum5: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 58.000000000000000000
+    Position.Y = 391.000000000000000000
+    Size.Width = 13.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.WordWrap = False
+    Text = '5.'
+    TabOrder = 43
+  end
+  object lblDir2: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 100.000000000000000000
+    Position.Y = 101.000000000000000000
+    Size.Width = 700.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    Text = 
+      'Slot 1 is the default fallback folder. Slots 2-7 override it dur' +
+      'ing their date windows.'
+    TabOrder = 44
+  end
+  object lblDefDir: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 90.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 146.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.WordWrap = False
+    Text = 'Default Music Directory'
+    TabOrder = 45
+  end
+  object lblSelDir: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 100.000000000000000000
+    Position.Y = 76.000000000000000000
+    Size.Width = 700.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    Text = 
+      'Select a folder for each slot. Dates use month/day format, for e' +
+      'xample 04/27.'
+    TabOrder = 46
+  end
+  object edRandMusicDir1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 0
+    MaxLength = 150
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 90.000000000000000000
+    Position.Y = 205.000000000000000000
+    Hint = 'Enter the directory to select random music.'
+    Size.Width = 320.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object btnSelectDir1: TButton
+    StyledSettings = []
+    Position.X = 424.000000000000000000
+    Position.Y = 205.000000000000000000
+    Size.Width = 84.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Browse'
+    TextSettings.Font.Size = 13.000000000000000000
+  end
+  object edRandMusicDir2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 2
+    MaxLength = 150
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 90.000000000000000000
+    Position.Y = 250.000000000000000000
+    Hint = 'Enter the directory to select random music.'
+    Size.Width = 320.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object btnSelectDir2: TButton
+    StyledSettings = []
+    Position.X = 424.000000000000000000
+    Position.Y = 250.000000000000000000
+    Size.Width = 84.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Browse'
+    TextSettings.Font.Size = 13.000000000000000000
+  end
+  object edFrmDate2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 4
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 574.000000000000000000
+    Position.Y = 250.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object edToDate2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 5
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 682.000000000000000000
+    Position.Y = 250.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object edRandMusicDir3: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 6
+    MaxLength = 150
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 90.000000000000000000
+    Position.Y = 295.000000000000000000
+    Hint = 'Enter the directory to select random music.'
+    Size.Width = 320.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object btnSelectDir3: TButton
+    StyledSettings = []
+    Position.X = 424.000000000000000000
+    Position.Y = 295.000000000000000000
+    Size.Width = 84.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = 'Browse'
+    TextSettings.Font.Size = 13.000000000000000000
+  end
+  object edFrmDate3: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 8
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 574.000000000000000000
+    Position.Y = 295.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object edToDate3: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 9
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 682.000000000000000000
+    Position.Y = 295.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object edRandMusicDir4: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 10
+    MaxLength = 150
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 90.000000000000000000
+    Position.Y = 340.000000000000000000
+    Hint = 'Enter the directory to select random music.'
+    Size.Width = 320.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object btnSelectDir4: TButton
+    StyledSettings = []
+    Position.X = 424.000000000000000000
+    Position.Y = 340.000000000000000000
+    Size.Width = 84.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 11
+    Text = 'Browse'
+    TextSettings.Font.Size = 13.000000000000000000
+  end
+  object edFrmDate4: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 12
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 574.000000000000000000
+    Position.Y = 340.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object edToDate4: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 13
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 682.000000000000000000
+    Position.Y = 340.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object edRandMusicDir5: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 14
+    MaxLength = 150
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 90.000000000000000000
+    Position.Y = 385.000000000000000000
+    Hint = 'Enter the directory to select random music.'
+    Size.Width = 320.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object btnSelectDir5: TButton
+    StyledSettings = []
+    Position.X = 424.000000000000000000
+    Position.Y = 385.000000000000000000
+    Size.Width = 84.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 15
+    Text = 'Browse'
+    TextSettings.Font.Size = 13.000000000000000000
+  end
+  object edFrmDate5: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 16
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 574.000000000000000000
+    Position.Y = 385.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object edToDate5: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 17
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 682.000000000000000000
+    Position.Y = 385.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object lblFromDate6: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 530.000000000000000000
+    Position.Y = 436.000000000000000000
+    Size.Width = 30.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'From'
+    TabOrder = 47
+  end
+  object lblToDate6: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 654.000000000000000000
+    Position.Y = 436.000000000000000000
+    Size.Width = 14.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'To'
+    TabOrder = 48
+  end
+  object lblFromDate7: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 530.000000000000000000
+    Position.Y = 481.000000000000000000
+    Size.Width = 30.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'From'
+    TabOrder = 49
+  end
+  object lblToDate7: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 654.000000000000000000
+    Position.Y = 481.000000000000000000
+    Size.Width = 14.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.WordWrap = False
+    Text = 'To'
+    TabOrder = 50
+  end
+  object lblNum6: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 58.000000000000000000
+    Position.Y = 436.000000000000000000
+    Size.Width = 13.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.WordWrap = False
+    Text = '6.'
+    TabOrder = 51
+  end
+  object lblNum7: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 58.000000000000000000
+    Position.Y = 481.000000000000000000
+    Size.Width = 13.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.WordWrap = False
+    Text = '7.'
+    TabOrder = 52
+  end
+  object edRandMusicDir6: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 18
+    MaxLength = 150
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 90.000000000000000000
+    Position.Y = 430.000000000000000000
+    Hint = 'Enter the directory to select random music.'
+    Size.Width = 320.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object btnSelectDir6: TButton
+    StyledSettings = []
+    Position.X = 424.000000000000000000
+    Position.Y = 430.000000000000000000
+    Size.Width = 84.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 19
+    Text = 'Browse'
+    TextSettings.Font.Size = 13.000000000000000000
+  end
+  object edFrmDate6: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 20
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 574.000000000000000000
+    Position.Y = 430.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object edToDate6: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 21
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 682.000000000000000000
+    Position.Y = 430.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object edRandMusicDir7: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 22
+    MaxLength = 150
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 90.000000000000000000
+    Position.Y = 475.000000000000000000
+    Hint = 'Enter the directory to select random music.'
+    Size.Width = 320.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object btnSelectDir7: TButton
+    StyledSettings = []
+    Position.X = 424.000000000000000000
+    Position.Y = 475.000000000000000000
+    Size.Width = 84.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 23
+    Text = 'Browse'
+    TextSettings.Font.Size = 13.000000000000000000
+  end
+  object edFrmDate7: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 24
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 574.000000000000000000
+    Position.Y = 475.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object edToDate7: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 25
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 682.000000000000000000
+    Position.Y = 475.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+  end
+  object btnSave: TButton
+    Position.X = 532.000000000000000000
+    Position.Y = 535.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 29
+    Text = 'Save'
+    TextSettings.Font.Size = 15.000000000000000000
+    Visible = False
+  end
+  object btnCancel: TButton
+    StyledSettings = [Other]
+    Position.X = 632.000000000000000000
+    Position.Y = 535.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 26
+    Text = 'Cancel'
+    TextSettings.Font.Size = 15.000000000000000000
+    Visible = False
+  end
+  object brnClose: TButton
+    StyledSettings = [Other]
+    Position.X = 732.000000000000000000
+    Position.Y = 535.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 27
+    Text = 'Close'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = brnCloseClick
+  end
+  object DBNavigator1: TBindNavigator
+    Position.X = 532.000000000000000000
+    Position.Y = 535.000000000000000000
+    Size.Width = 112.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 28
+    VisibleButtons = [nbPost, nbCancel]
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object lblNavigatorSave: TLabel
+    StyledSettings = []
+    Position.X = 532.000000000000000000
+    Position.Y = 515.000000000000000000
+    Size.Width = 56.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claWhite
+    TextSettings.HorzAlign = Center
+    Text = 'Save'
+    TabOrder = 53
+  end
+  object lblNavigatorCancel: TLabel
+    StyledSettings = []
+    Position.X = 588.000000000000000000
+    Position.Y = 515.000000000000000000
+    Size.Width = 56.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claWhite
+    TextSettings.HorzAlign = Center
+    Text = 'Cancel'
+    TabOrder = 54
+  end
+  object rdOpenDialog1: TOpenDialog
+    InitialDir = '.'
+    Left = 896
+    Top = 184
+  end
+  object rdDataSource1: TDataSource
+    DataSet = rdFDQuery1
+    Left = 896
+    Top = 16
+  end
+  object rdFDQuery1: TFDQuery
+    FieldOptions.BlobDisplayValue = dvFullText
+    Connection = rdFDConnection1
+    SQL.Strings = (
+      'SELECT * FROM PL_RAND_DIR_ROTATION;')
+    Left = 896
+    Top = 72
+  end
+  object rdFDConnection1: TFDConnection
+    Params.Strings = (
+      'DriverID=SQLite'
+      'Database=./databases/carillon.db')
+    LoginPrompt = False
+    Left = 896
+    Top = 128
+  end
+end

@@ -1,0 +1,183 @@
+object Groups: TGroups
+  Left = 500
+  Top = 150
+  Caption = 'Group Maintenance'
+  ClientHeight = 639
+  ClientWidth = 927
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Left = 500
+  Top = 150
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 282.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 263.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 30.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'Group Maintenance'
+    TabOrder = 4
+  end
+  object DBNavigator1: TBindNavigator
+    Position.X = 282.000000000000000000
+    Position.Y = 475.000000000000000000
+    Size.Width = 252.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    VisibleButtons = [nbInsert, nbDelete, nbPost, nbCancel]
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object lblNavigatorAdd: TLabel
+    StyledSettings = []
+    Position.X = 282.000000000000000000
+    Position.Y = 455.000000000000000000
+    Size.Width = 63.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Add'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object lblNavigatorDelete: TLabel
+    StyledSettings = []
+    Position.X = 345.000000000000000000
+    Position.Y = 455.000000000000000000
+    Size.Width = 63.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Delete'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object lblNavigatorSave: TLabel
+    StyledSettings = []
+    Position.X = 408.000000000000000000
+    Position.Y = 455.000000000000000000
+    Size.Width = 63.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Save'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object lblNavigatorCancel: TLabel
+    StyledSettings = []
+    Position.X = 471.000000000000000000
+    Position.Y = 455.000000000000000000
+    Size.Width = 63.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Cancel'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object btnClose: TButton
+    StyledSettings = [Other]
+    Position.X = 776.000000000000000000
+    Position.Y = 476.000000000000000000
+    Size.Width = 75.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Close'
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.FontColor = claMaroon
+    OnClick = btnCloseClick
+  end
+  object DBGrid1: TStringGrid
+    CanFocus = True
+    ClipChildren = True
+    Padding.Left = 4.000000000000000000
+    Padding.Right = 2.000000000000000000
+    Position.X = 124.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 537.000000000000000000
+    Size.Height = 289.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 15.000000000000000000
+    StyledSettings = [Family, Style, FontColor]
+    TabOrder = 2
+    Options = [ColumnResize, ColLines, RowLines, AlwaysShowSelection, Header, HeaderClick]
+    OnDrawColumnBackground = DBGrid1DrawColumnCell
+    Viewport.Width = 533.000000000000000000
+    Viewport.Height = 264.000000000000000000
+  end
+  object btnRecalculateDates: TButton
+    StyledSettings = []
+    Hint = 'Press to recalculate the holidays for the upcoming year.'
+    Images = ImageList1
+    ImageIndex = 1
+    Position.X = 124.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 157.000000000000000000
+    Size.Height = 61.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Recalculate Dates for Upcoming Year'
+    TextSettings.Font.Size = 15.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = True
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = btnRecalculateDatesClick
+  end
+  object Timer1: TTimer
+    Interval = 60000
+    OnTimer = Timer1Timer
+    Left = 808
+    Top = 352
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=./databases/carillon.db'
+      'Port=3050'
+      'OpenMode=CreateUTF8'
+      'DriverID=SQLite')
+    LoginPrompt = False
+    Left = 808
+    Top = 32
+  end
+  object FDQuery1: TFDQuery
+    FieldOptions.BlobDisplayValue = dvFullText
+    DetailFields = 'SEASONALGROUP;PLAY_DATE_FROM;PLAY_DATE_TO;PLAY_TIME'
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM SEASONALGROUPS ORDER BY SEASONALGROUP;')
+    Left = 808
+    Top = 96
+  end
+  object FDTable1: TFDTable
+    IndexFieldNames = 'SEASONALGROUP'
+    MasterSource = DataSource1
+    Connection = FDConnection1
+    TableName = 'SEASONALGROUPS'
+    Left = 808
+    Top = 160
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 808
+    Top = 224
+  end
+  object ImageList1: TImageList
+    Source = <>
+    Destination = <>
+    Left = 808
+    Top = 288
+  end
+end

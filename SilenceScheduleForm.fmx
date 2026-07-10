@@ -1,0 +1,440 @@
+object frmSilenceSchedule: TfrmSilenceSchedule
+  Left = 420
+  Top = 140
+  Caption = 'Silence Schedule'
+  ClientHeight = 558
+  ClientWidth = 860
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Left = 420
+  Top = 140
+  DesignerMasterStyle = 0
+  object lblHeader: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 344.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 192.000000000000000000
+    Size.Height = 35.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 26.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+    TextSettings.WordWrap = False
+    Text = 'Silence Schedule'
+    TabOrder = 0
+  end
+  object lblNote: TLabel
+    StyledSettings = []
+    Position.X = 156.000000000000000000
+    Position.Y = 51.000000000000000000
+    Size.Width = 576.000000000000000000
+    Size.Height = 53.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+    Text = 
+      'Enter information in these fields to silence the bell system on ' +
+      'selected days. '#13#10'Times may be entered as 10:00 AM or 14:05. A co' +
+      'lon is required in the times.'
+    TabOrder = 1
+  end
+  object lblEntry: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 344.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 187.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 18.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'Silence Window 1 of 12'
+    TabOrder = 2
+  end
+  object chkEnabled: TCheckBox
+    StyledSettings = [Other]
+    Position.X = 400.000000000000000000
+    Position.Y = 160.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Enabled'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = ControlChanged
+  end
+  object lblPurpose: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 190.000000000000000000
+    Position.Y = 212.000000000000000000
+    Size.Width = 61.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'Purpose:'
+    TabOrder = 4
+  end
+  object edPurpose: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 5
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 272.000000000000000000
+    Position.Y = 207.000000000000000000
+    Size.Width = 400.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    OnChange = ControlChanged
+  end
+  object lblStartTime: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 174.000000000000000000
+    Position.Y = 262.000000000000000000
+    Size.Width = 75.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'Start Time:'
+    TabOrder = 6
+  end
+  object edStartTime: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 7
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 272.000000000000000000
+    Position.Y = 257.000000000000000000
+    Size.Width = 140.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    OnChange = ControlChanged
+  end
+  object lblEndTime: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 454.000000000000000000
+    Position.Y = 262.000000000000000000
+    Size.Width = 69.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'End Time:'
+    TabOrder = 8
+  end
+  object edEndTime: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 9
+    TextSettings.Font.Size = 15.000000000000000000
+    Position.X = 536.000000000000000000
+    Position.Y = 257.000000000000000000
+    Size.Width = 136.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Other]
+    OnChange = ControlChanged
+  end
+  object lblDays: TLabel
+    AutoSize = True
+    StyledSettings = []
+    Position.X = 234.000000000000000000
+    Position.Y = 322.000000000000000000
+    Size.Width = 38.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.WordWrap = False
+    Text = 'Days:'
+    TabOrder = 10
+  end
+  object chkMonday: TCheckBox
+    StyledSettings = [Other]
+    Position.X = 304.000000000000000000
+    Position.Y = 318.000000000000000000
+    Size.Width = 64.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 11
+    Text = 'Mon'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = ControlChanged
+  end
+  object chkTuesday: TCheckBox
+    StyledSettings = [Other]
+    Position.X = 374.000000000000000000
+    Position.Y = 318.000000000000000000
+    Size.Width = 62.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    Text = 'Tue'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = ControlChanged
+  end
+  object chkWednesday: TCheckBox
+    StyledSettings = [Other]
+    Position.X = 442.000000000000000000
+    Position.Y = 318.000000000000000000
+    Size.Width = 68.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    Text = 'Wed'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = ControlChanged
+  end
+  object chkThursday: TCheckBox
+    StyledSettings = [Other]
+    Position.X = 516.000000000000000000
+    Position.Y = 318.000000000000000000
+    Size.Width = 66.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 14
+    Text = 'Thu'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = ControlChanged
+  end
+  object chkFriday: TCheckBox
+    StyledSettings = [Other]
+    Position.X = 588.000000000000000000
+    Position.Y = 318.000000000000000000
+    Size.Width = 54.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 15
+    Text = 'Fri'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = ControlChanged
+  end
+  object chkSaturday: TCheckBox
+    StyledSettings = [Other]
+    Position.X = 304.000000000000000000
+    Position.Y = 358.000000000000000000
+    Size.Width = 60.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 16
+    Text = 'Sat'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = ControlChanged
+  end
+  object chkSunday: TCheckBox
+    StyledSettings = [Other]
+    Position.X = 374.000000000000000000
+    Position.Y = 358.000000000000000000
+    Size.Width = 66.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 17
+    Text = 'Sun'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = ControlChanged
+  end
+  object btnFirst: TButton
+    StyledSettings = [Other]
+    Position.X = 208.000000000000000000
+    Position.Y = 424.000000000000000000
+    Size.Width = 78.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 18
+    Visible = False
+    Text = 'First'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = btnFirstClick
+  end
+  object btnPrior: TButton
+    StyledSettings = [Other]
+    Position.X = 296.000000000000000000
+    Position.Y = 424.000000000000000000
+    Size.Width = 78.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 19
+    Visible = False
+    Text = 'Prior'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = btnPriorClick
+  end
+  object btnNext: TButton
+    StyledSettings = [Other]
+    Position.X = 384.000000000000000000
+    Position.Y = 424.000000000000000000
+    Size.Width = 78.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 20
+    Visible = False
+    Text = 'Next'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = btnNextClick
+  end
+  object btnLast: TButton
+    StyledSettings = [Other]
+    Position.X = 472.000000000000000000
+    Position.Y = 424.000000000000000000
+    Size.Width = 78.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 21
+    Visible = False
+    Text = 'Last'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = btnLastClick
+  end
+  object btnSave: TButton
+    StyledSettings = [Other]
+    Position.X = 560.000000000000000000
+    Position.Y = 424.000000000000000000
+    Size.Width = 78.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 22
+    Visible = False
+    Text = 'Save'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = btnSaveClick
+  end
+  object btnClose: TButton
+    StyledSettings = [Other]
+    Position.X = 646.000000000000000000
+    Position.Y = 424.000000000000000000
+    Size.Width = 78.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 23
+    Text = 'Close'
+    TextSettings.Font.Size = 15.000000000000000000
+    OnClick = btnCloseClick
+  end
+  object DBNavigator1: TBindNavigator
+    Position.X = 278.000000000000000000
+    Position.Y = 424.000000000000000000
+    Size.Width = 280.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 24
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbPost, nbCancel]
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object lblNavigatorFirst: TLabel
+    StyledSettings = []
+    Position.X = 278.000000000000000000
+    Position.Y = 404.000000000000000000
+    Size.Width = 46.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'First'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object lblNavigatorPrior: TLabel
+    StyledSettings = []
+    Position.X = 324.000000000000000000
+    Position.Y = 404.000000000000000000
+    Size.Width = 47.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Prior'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object lblNavigatorNext: TLabel
+    StyledSettings = []
+    Position.X = 371.000000000000000000
+    Position.Y = 404.000000000000000000
+    Size.Width = 47.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Next'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object lblNavigatorLast: TLabel
+    StyledSettings = []
+    Position.X = 418.000000000000000000
+    Position.Y = 404.000000000000000000
+    Size.Width = 47.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Last'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object lblNavigatorSave: TLabel
+    StyledSettings = []
+    Position.X = 465.000000000000000000
+    Position.Y = 404.000000000000000000
+    Size.Width = 47.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Save'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object lblNavigatorCancel: TLabel
+    StyledSettings = []
+    Position.X = 512.000000000000000000
+    Position.Y = 404.000000000000000000
+    Size.Width = 46.000000000000000000
+    Size.Height = 18.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Cancel'
+    TextSettings.Font.Size = 13.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+  end
+  object lblStatus: TLabel
+    StyledSettings = []
+    Position.X = 208.000000000000000000
+    Position.Y = 480.000000000000000000
+    Size.Width = 516.000000000000000000
+    Size.Height = 28.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.FontColor = claMaroon
+    TextSettings.HorzAlign = Center
+    TabOrder = 24
+  end
+  object SilenceConnection: TFDConnection
+    Params.Strings = (
+      'Database=./databases/carillon.db'
+      'OpenMode=CreateUTF8'
+      'DriverID=SQLite')
+    LoginPrompt = False
+    Left = 776
+    Top = 240
+  end
+  object SilenceQuery: TFDQuery
+    Connection = SilenceConnection
+    Left = 776
+    Top = 304
+  end
+  object SilenceDataSource: TDataSource
+    DataSet = SilenceQuery
+    Left = 776
+    Top = 368
+  end
+end

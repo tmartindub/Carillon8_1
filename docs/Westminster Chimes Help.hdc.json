@@ -1,0 +1,622 @@
+﻿{
+  "name": "New Help Project",
+  "version": "1.0",
+  "company": "Your Company",
+  "outputPath": "C:\\New Delphi Projects\\Carillon8_1- Portable - FMX\\Help",
+  "variables": [
+    {
+      "key": "Version",
+      "value": "1.0"
+    },
+    {
+      "key": "ProductName",
+      "value": "New Help Project"
+    },
+    {
+      "key": "BuildDate",
+      "value": "2026-07-09 13:45"
+    },
+    {
+      "key": "BuildNumber",
+      "value": "2"
+    },
+    {
+      "key": "Company",
+      "value": "Your Company"
+    }
+  ],
+  "snippets": [
+    {
+      "key": "warning",
+      "value": "> Warning: Describe the risk and the recovery path."
+    },
+    {
+      "key": "procedure",
+      "value": "1. Start from the main window.\r\n2. Choose the command.\r\n3. Confirm the result."
+    },
+    {
+      "key": "note",
+      "value": "> Note: Replace this with a concise note."
+    }
+  ],
+  "conditions": [
+    {
+      "key": "Pro",
+      "value": "Included in the professional edition."
+    },
+    {
+      "key": "Enterprise",
+      "value": "Included in enterprise builds."
+    }
+  ],
+  "assets": [
+    {
+      "key": "image7.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image7.png"
+    },
+    {
+      "key": "image8.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image8.png"
+    },
+    {
+      "key": "image3.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image3.png"
+    },
+    {
+      "key": "image11.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image11.png"
+    },
+    {
+      "key": "image6.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image6.png"
+    },
+    {
+      "key": "image2.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image2.png"
+    },
+    {
+      "key": "image5.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image5.png"
+    },
+    {
+      "key": "image1.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image1.png"
+    },
+    {
+      "key": "Editor image 20260709 132354575 1",
+      "value": "Images\\ImportedAssets\\EditorImages\\editor-image-20260709132354573-1.png"
+    },
+    {
+      "key": "Editor image 20260709 132356846 1",
+      "value": "Images\\ImportedAssets\\EditorImages\\editor-image-20260709132356843-1.png"
+    },
+    {
+      "key": "image4.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image4.png"
+    },
+    {
+      "key": "image9.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image9.png"
+    },
+    {
+      "key": "image10.png",
+      "value": "Images\\ImportedAssets\\Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide\\image10.png"
+    }
+  ],
+  "templates": [
+    {
+      "key": "Procedure",
+      "value": "# {{Title}}\r\n\r\n## Goal\r\nState the outcome.\r\n\r\n## Steps\r\n{{snippet:procedure}}\r\n\r\n## Result\r\nDescribe the success state."
+    },
+    {
+      "key": "Troubleshooting",
+      "value": "# {{Title}}\r\n\r\n## Symptom\r\nDescribe what the user sees.\r\n\r\n## Cause\r\nExplain the likely cause.\r\n\r\n## Fix\r\nGive the shortest reliable recovery path."
+    },
+    {
+      "key": "Overview",
+      "value": "# {{Title}}\r\n\r\n## What It Does\r\nDescribe the feature in one practical paragraph.\r\n\r\n## When To Use It\r\nExplain the user situation this topic solves.\r\n\r\n## Related Topics\r\nAdd links to nearby concepts and procedures."
+    }
+  ],
+  "glossary": [
+    {
+      "key": "Snippet",
+      "value": "A reusable block of documentation inserted into one or more topics."
+    },
+    {
+      "key": "Topic",
+      "value": "A standalone documentation page that can be authored, reviewed, indexed, and published."
+    },
+    {
+      "key": "Condition",
+      "value": "A build rule that includes or excludes content for a specific audience, edition, or version."
+    }
+  ],
+  "indexKeywords": [
+    {
+      "key": "reference",
+      "value": "Reference"
+    },
+    {
+      "key": "troubleshooting",
+      "value": "Troubleshooting"
+    },
+    {
+      "key": "getting started",
+      "value": "Getting Started"
+    }
+  ],
+  "buildProfiles": [
+    {
+      "key": "Responsive HTML",
+      "value": "html=true;markdown=true;search=true;print=true;glossary=true;index=true;mapids=true"
+    },
+    {
+      "key": "Developer Integration",
+      "value": "html=true;search=true;mapids=true;aliasHeader=true;tocJson=true"
+    },
+    {
+      "key": "Print Manual",
+      "value": "print=true;markdown=false;singlePage=true"
+    }
+  ],
+  "projectSettings": [
+    {
+      "key": "HtmlTitle",
+      "value": "Westminster Chimes Help"
+    },
+    {
+      "key": "SupportUrl",
+      "value": "https://example.com/support"
+    },
+    {
+      "key": "HtmlHomeFileName",
+      "value": "index.html"
+    },
+    {
+      "key": "MetadataPrefix",
+      "value": ""
+    },
+    {
+      "key": "ActiveTheme",
+      "value": "Professional Light"
+    },
+    {
+      "key": "SearchSynonyms",
+      "value": "setup=install;error=problem;topic=article"
+    },
+    {
+      "key": "MarkdownFolder",
+      "value": "markdown"
+    },
+    {
+      "key": "LastBuildAt",
+      "value": "2026-07-09 13:45"
+    },
+    {
+      "key": "OutputPath",
+      "value": "C:\\New Delphi Projects\\Carillon8_1- Portable - FMX\\Help"
+    },
+    {
+      "key": "BuildNumber",
+      "value": "2"
+    },
+    {
+      "key": "PortalTitle",
+      "value": "New Help Project"
+    },
+    {
+      "key": "Copyright",
+      "value": "Copyright 2026 Your Company"
+    },
+    {
+      "key": "StopWords",
+      "value": "a,an,and,the,or,to,of,in,on,for"
+    },
+    {
+      "key": "DefaultLanguage",
+      "value": "en-US"
+    }
+  ],
+  "themes": [
+    {
+      "key": "Professional Light",
+      "value": "text=#1f2933;background=#f7f9fb;surface=#ffffff;primary=#17324d;accent=#0f766e;warning=#b7791f"
+    },
+    {
+      "key": "High Contrast",
+      "value": "text=#000000;background=#ffffff;surface=#ffffff;primary=#000000;accent=#005fcc;warning=#8a4b00"
+    },
+    {
+      "key": "Technical Dark",
+      "value": "text=#e5e7eb;background=#111827;surface=#1f2937;primary=#93c5fd;accent=#5eead4;warning=#fbbf24"
+    }
+  ],
+  "importExportRules": [
+    {
+      "key": "Auto Setup Import",
+      "value": "Create title and overview pages; split headings into topics; infer Help IDs, tags, TOC, index, and website navigation files"
+    },
+    {
+      "key": "Translation Package",
+      "value": "Export topic id, title, body, language, updatedAt; import by topic id"
+    },
+    {
+      "key": "HTML Import",
+      "value": "Extract body content; normalize links; copy local assets; preserve alt text"
+    },
+    {
+      "key": "Word Import",
+      "value": "Preserve headings; split Heading 1 into topics; copy images into assets; clean pasted styles"
+    },
+    {
+      "key": "Markdown Import",
+      "value": "Use first H1 as topic title; preserve fenced code; resolve relative images"
+    }
+  ],
+  "topics": [
+    {
+      "id": "{1CA17404-AE96-4608-BEA9-335A69FD6661}",
+      "parentId": "",
+      "title": "Westminster Chimes and Carillon Bells",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1 style=\"text-align: center;\">Westminster Chimes and Carillon Bells</h1>\n\n<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p>\n\n<p style=\"text-align: center;\"></p><span style=\"font-family:&quot;Segoe UI&quot;;font-size:14pt;color:#111827;font-weight:400;font-style:normal;text-decoration:none;\"><p style=\"text-align: center;\">Operating Manual</p>\n\n<p style=\"text-align: center;\">Version 8.1 Portable Version</p></span><p style=\"text-align: center;\"></p>\n\n<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\">Revised July 8, 2026</p>\n\n<p style=\"text-align: center;\">A practical daily-use guide for operating, scheduling, silencing, logging, and maintaining the portable bell system.</p>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_WESTMINSTER_CHIMES_AND_CARILLON_BELLS",
+      "language": "en-US",
+      "tags": "imported,docx",
+      "conditions": "",
+      "updatedAt": "2026-07-09T07:59:05.961Z"
+    },
+    {
+      "id": "{2CAC0F63-C020-4909-A878-2F7D00B1E57F}",
+      "parentId": "",
+      "title": "Foreword",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Foreword</h1>\n\n<p>Westminster Chimes and Carillon Bells is designed to run a church or organizational bell system from a portable drive. Once the songs, schedules, groups, silence windows, random music folders, and email settings are set up, the program can run continuously and play the correct audio at the correct time.</p>\n\n<p>This guide is written for everyday operation. It explains what the screens are for, what the main controls do, and how to make normal changes without needing to know the internal source code or database design.</p><p><br></p><p><br></p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Portable operation: The program must be started from the portable drive root, such as E:\\Carillon.exe or F:\\Carillon.exe, or by using the included start_carillon.vbs or start_carillon.bat. Starting it from the wrong working directory can prevent the database, logs, help, and music folders from being found.</th></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_FOREWORD",
+      "language": "en-US",
+      "tags": "imported,docx,procedure,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T07:59:18.500Z"
+    },
+    {
+      "id": "{3F2306D6-89FF-4658-BDE0-C7FCC5E4C78E}",
+      "parentId": "{2CAC0F63-C020-4909-A878-2F7D00B1E57F}",
+      "title": "Usage Assumptions",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Usage Assumptions</h1>\n\n<p></p><ul><li>The computer is running Windows 10 or later and has working audio output connected to the desired amplifier system.</li><li>The portable drive contains Carillon.exe, the database folder, music folders, help files, logs folder, and email support files, as distributed in the packaged zip file.</li><li>The person setting up the system understands the intended church or organization schedule.</li><li>A current backup exists before major playlist, group, database, or release changes are made.</li><li>Times are entered carefully. Version 8.1 supports seconds in schedules and silence windows.</li></ul><p></p>\n\n\n\n\n\n\n\n\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_USAGE_ASSUMPTIONS",
+      "language": "en-US",
+      "tags": "imported,docx,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T08:00:57.312Z"
+    },
+    {
+      "id": "{36866945-855A-4D24-B1BB-31159EB0EB2C}",
+      "parentId": "",
+      "title": "What Is New in Version 8.1",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>What's New in Version 8.1</h1>\n\n<p><ul><li>Version 8.1 focuses on reliability, clearer editing, stronger schedule rebuilding, better theme consistency, and better reporting. These changes are practical operator improvements rather than a new workflow.</li><li>Play-time fields and schedule displays support seconds, such as 4:05:00 PM or 22:15:30.</li><li>The remaining schedule display uses a clean table with Time, Type, and Song/Purpose columns.</li><li>A Silence schedule has been added to silence the bell system during times when silence is required. The entries in the schedule are shown with full seconds and suppress scheduled events during the silence window.</li><li>Groups, Settings, Email Settings, Random Music, and Silence Schedule screens rebuild the active schedule when they close.</li><li>Group maintenance copies group dates and the primary group play time to matching songs and clears stale extra play-time slots.</li><li>Random Music exposes seven directory slots: one default folder and six date-window override folders. Users may schedule different types of random music for at six times during the year.</li><li>Editable screens now use labeled navigator buttons so users know which button means Add, Delete, Save, Cancel, First, Prior, Next, and Last.</li><li>Show Log opens a themed log viewer instead of just a plain viewer.</li><li>Theme rules are improved so dark and light themes remain readable across the main and maintenance screens.</li><li>Morning reports and the log viewer read the same log file used by playback logging.</li></ul></p>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_WHAT_IS_NEW_IN_VERSION_8_1",
+      "language": "en-US",
+      "tags": "imported,docx,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T08:00:35.301Z"
+    },
+    {
+      "id": "{74A68481-36E0-4B0D-A81D-DBB036899FB0}",
+      "parentId": "",
+      "title": "The Portable Drive Layout",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>The Portable Drive Layout</h1>\n\n<p>A working portable copy normally contains the following folders and files on the root of the flash drive or portable media. This data is distributed in a zip file, downloaded from the web site. This layout should NOT be changed since the application expects the files to be in a certain place.</p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Item</th><th>Purpose</th></tr>\n<tr><td>Carillon.exe</td><td>The main program.</td></tr>\n<tr><td>start_carillon.vbs</td><td>Preferred startup helper for normal launch.</td></tr>\n<tr><td>start_carillon.bat</td><td>Batch startup helper.</td></tr>\n<tr><td>databases\\carillon.db</td><td>Saved playlist, settings, groups, random music slots, and silence schedule data.</td></tr>\n<tr><td>Help</td><td>Compiled or web help files used by the Help menu.</td></tr>\n<tr><td>logs\\CarillonPlayLog.txt</td><td>Playback and transaction log, when logging is enabled.</td></tr>\n<tr><td>Songs, Music, Random_songs, etc.</td><td>Audio folders used by normal scheduled playback and random music.</td></tr>\n<tr><td>libeay32.dll and ssleay32.dll</td><td>Email support files used when email reports are enabled.</td></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_THE_PORTABLE_DRIVE_LAYOUT",
+      "language": "en-US",
+      "tags": "imported,docx,procedure,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T08:01:35.854Z"
+    },
+    {
+      "id": "{57D19E23-0149-4FC0-85FB-57F4C5690C2B}",
+      "parentId": "",
+      "title": "Starting the Program",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Starting the Program</h1>\n\n<p>Insert the portable drive and note the drive letter assigned by Windows.</p>\n\n<p>Open the drive root in File Explorer.</p>\n\n<p>Start the program with start_carillon.vbs, start_carillon.bat, or Carillon.exe from that drive root.</p>\n\n<p>Confirm the main screen opens and the database loads without an unable-to-open-database message, or any other errors. There should be none.</p>\n\n<p>Confirm the Enable Schedule box is checked if automatic playback should run.</p><p><br></p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Important: If the program reports that it cannot open the database file, close it and restart it from the portable drive root. Opening the executable from another working directory can break relative paths and the application will not start.</th></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_STARTING_THE_PROGRAM",
+      "language": "en-US",
+      "tags": "imported,docx,troubleshooting,procedure",
+      "conditions": "",
+      "updatedAt": "2026-07-09T08:01:55.669Z"
+    },
+    {
+      "id": "{8EC744B3-8B44-49BB-A6CC-BD8B02EC4814}",
+      "parentId": "",
+      "title": "Main Screen Overview",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Main Screen Overview</h1>\n\n<p>The main screen is the daily operating screen. It shows the grouped song list, the schedule editor for the selected song, manual playback controls, the system volume control, the schedule status, and the main menu.</p>\n\n<figure draggable=\"true\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image1.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\"><figcaption><br></figcaption></figure>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Area</th><th>What it does</th></tr>\n<tr><td>Application header</td><td>Shows the program title and the active visual theme.</td></tr>\n<tr><td>Enable Schedule</td><td>Turns automatic scheduled playback on or off.</td></tr>\n<tr><td>Playlist grid</td><td>Shows songs grouped by season or purpose, with song duration.</td></tr>\n<tr><td>Open All / Close All</td><td>Expands or collapses all song groups in the grid.</td></tr>\n<tr><td>Play Schedule panel</td><td>Edits dates, weekdays, group, play times, and repeat count for the selected song.</td></tr>\n<tr><td>Navigator</td><td>Adds, deletes, saves, or cancels playlist edits.</td></tr>\n<tr><td>Media Player Control</td><td>Manually plays, pauses, or stops the selected song.</td></tr>\n<tr><td>System Volume</td><td>Controls the Windows system volume and mute state.</td></tr>\n<tr><td>Status bar</td><td>Shows recent playback, song counts, and version/status information.</td></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_MAIN_SCREEN_OVERVIEW",
+      "language": "en-US",
+      "tags": "imported,docx,overview",
+      "conditions": "",
+      "updatedAt": "2026-07-09T08:02:15.333Z"
+    },
+    {
+      "id": "{1047F454-490F-4451-A4B2-CBFF06AE12CD}",
+      "parentId": "",
+      "title": "Enable Schedule",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Enable Schedule</h1>\n\n<p>When Enable Schedule is checked, the program builds the daily schedule and the schedule timer watches for due entries. When the box is unchecked, scheduled playback is stopped and the current schedule list is cleared.</p>\n\n<figure draggable=\"true\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image2.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\"></figure>\n\n<p>Many maintenance screens temporarily disable the schedule and then re-enable it when they close so changes are picked up when the schedule or other data is changed. If you intentionally turn the schedule off, turn it back on before leaving the computer unattended. Failure to do so will leave the schedule not running and no music will play.</p>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_ENABLE_SCHEDULE",
+      "language": "en-US",
+      "tags": "imported,docx",
+      "conditions": "",
+      "updatedAt": "2026-07-09T08:02:43.436Z"
+    },
+    {
+      "id": "{485D0491-7EA6-47AE-BBF4-4E84E28C2B53}",
+      "parentId": "",
+      "title": "Playlist Grid",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Playlist Grid</h1>\n\n<p>The playlist grid is a work area for reviewing songs. It is grouped by the song group or season. A group line shows how many songs are inside the group and can be opened or closed.</p>\n\n<figure draggable=\"true\" class=\"\" style=\"width: 488px; max-width: 100%; height: auto; box-sizing: border-box;\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image3.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\" class=\"\" style=\"width: 100%; max-width: 100%; height: 462px; object-fit: contain;\"></figure>\n\n<p><ol><li>Click a group line to open or close that group.</li><li>Use Open All to expand every group.</li><li>Use Close All to collapse every group.</li><li>Select a song row to edit its schedule fields on the right side of the screen.</li><li>Double-clicking or using Play can manually play the selected song.</li><li><br></li></ol></p>\n\n\n\n\n\n\n\n\n\n<table class=\"doc-table\">\n<tbody><tr><th>Grid purpose: The grid is not the compiled daily schedule. It is the saved playlist and scheduling editor. Use Schedule &gt; Show Remaining Schedule to see what is still due today.</th></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_PLAYLIST_GRID",
+      "language": "en-US",
+      "tags": "imported,docx,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T08:03:30.641Z"
+    },
+    {
+      "id": "{DD6AD6EA-36D9-4BFD-A278-BF0B7832DCB3}",
+      "parentId": "",
+      "title": "Play Schedule Panel",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Play Schedule Panel</h1>\n\n<p>The Play Schedule panel controls when the selected playlist row is eligible to play. A song normally needs a valid date range, at least one selected weekday, and at least one play time.</p>\n\n<figure draggable=\"true\" class=\"\" style=\"width: 479px; max-width: 100%; height: auto; box-sizing: border-box;\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image4.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\" class=\"\" style=\"width: 100%; max-width: 100%; height: 368px; object-fit: contain;\"><figcaption><br></figcaption></figure>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Field</th><th>How to use it</th></tr>\n<tr><td>Play on the following days</td><td>Check the weekdays when the selected row may play.</td></tr>\n<tr><td>Play Dates From / To</td><td>Enter the inclusive date range for the row.</td></tr>\n<tr><td>Group</td><td>Select the group or season assigned to the row.</td></tr>\n<tr><td>Play Time(s)</td><td>Enter up to twelve times. Seconds are allowed.</td></tr>\n<tr><td>Times to Play</td><td>Enter how many times the selected item should repeat when triggered. Keep this low unless a repeat is intended.</td></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_PLAY_SCHEDULE_PANEL",
+      "language": "en-US",
+      "tags": "imported,docx,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T11:32:28.617Z"
+    },
+    {
+      "id": "{3E626660-4FD5-43D5-92DE-81506037631C}",
+      "parentId": "",
+      "title": "Entering Times",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Entering Times</h1>\n\n<p>This application accepts both 12-hour and 24-hour time entries in schedule fields where the screen supports time input. Seconds may be included also and, in some cases is recommended. This would be, for example, when you have two things that should happen at the same time like chiming the noon hour and then having silence from noon to 3 PM. You would schedule the chime of noon at 12:00:00 and the silence to begin at 12:00:10. That would put them in chronological order correctly. The program normalizes display to a 12-hour time with AM or PM when appropriate.</p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>You can enter</th><th>Typical display</th></tr>\n<tr><td>4:05 PM</td><td>4:05:00 PM</td></tr>\n<tr><td>4:05:30 PM</td><td>4:05:30 PM</td></tr>\n<tr><td>16:05</td><td>4:05:00 PM</td></tr>\n<tr><td>22:15:30</td><td>10:15:30 PM</td></tr>\n</tbody></table>\n\n<p>Seconds matter: If you enter seconds, confirm them in Show Remaining Schedule. The schedule display should show full h:mm:ss AM/PM times.</p>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_ENTERING_TIMES",
+      "language": "en-US",
+      "tags": "imported,docx,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:20:33.284Z"
+    },
+    {
+      "id": "{0347A9FA-35EE-4471-9961-65F13CB8FF5A}",
+      "parentId": "",
+      "title": "Navigator Buttons and Editing",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Navigator Buttons and Editing</h1>\n\n<p>Editable screens use navigator buttons. The labels above the buttons identify the action. The most common buttons are Add, Delete, Save, and Cancel. Some maintenance screens also show First, Prior, Next, and Last.</p>\n\n<figure draggable=\"true\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image5.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\"><figcaption>Picture 1</figcaption></figure>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Button label</th><th>Meaning</th></tr>\n<tr><td>Add</td><td>Insert a new record where adding is supported.</td></tr>\n<tr><td>Delete</td><td>Delete the selected record where deletion is supported.</td></tr>\n<tr><td>Save</td><td>Post pending changes to the database.</td></tr>\n<tr><td>Cancel</td><td>Discard pending changes and restore the saved value.</td></tr>\n<tr><td>First / Prior / Next / Last</td><td>Move through records on maintenance screens.</td></tr>\n</tbody></table>\n\n<p>If you change a field and then save, the schedule is rebuilt where needed. If you cancel, the form should return to the saved database value. Note that some screens require entry to be terminated with the ENTER key before the <b>Save</b> checkmark become active.</p>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_NAVIGATOR_BUTTONS_AND_EDITING",
+      "language": "en-US",
+      "tags": "imported,docx,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T11:35:50.206Z"
+    },
+    {
+      "id": "{9F0F159B-A239-4A2E-A19D-860E2AB889A5}",
+      "parentId": "",
+      "title": "Setting Up a Song Schedule",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Setting Up a Song Schedule</h1><ol><li>\n\nSelect the song in the playlist grid.</li><li>\nChoose the weekdays when the song should play.</li><li>\nEnter the Play Dates From and To fields.</li><li>\nSelect the group or season if one applies.</li><li>\nEnter one or more play times. Use seconds when exact timing is needed.</li><li>\nSet Times to Play.</li><li>\nClick the navigator Save check mark.</li></ol>\n<p>Use Schedule &gt; Show Remaining Schedule to confirm the expected entries.</p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>After edits: If the schedule was disabled for editing, it should rebuild after Save. If it remains disabled because you turned it off manually, check Enable Schedule again.</th></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_SETTING_UP_A_SONG_SCHEDULE",
+      "language": "en-US",
+      "tags": "imported,docx,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:20:26.252Z"
+    },
+    {
+      "id": "{783854BA-C87C-42D0-B9F3-48E524D1B9AD}",
+      "parentId": "",
+      "title": "Adding Songs",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Adding Songs</h1>\n\n<p>A new song can be added to the playlist and then scheduled like any existing row. The exact file path must be preserved so the media player can find the audio file.</p><ol><li>\n\nClick the Add button in the main navigator.</li><li>\nChoose or enter the song file path through the song-add workflow.</li><li>\nAssign the group or season.</li><li>\nFill in dates, weekdays, play times, and Times to Play.</li><li>\nClick Save.</li><li>\nConfirm the song appears in the expected group and test it with Play if desired.</li></ol>\n<table class=\"doc-table\">\n<tbody><tr><th>Do not strip paths: Songs need their full path to be found. If a song file is moved or renamed, update the playlist row or re-add the song.</th></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_ADDING_SONGS",
+      "language": "en-US",
+      "tags": "imported,docx",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:20:15.637Z"
+    },
+    {
+      "id": "{B2055CC5-D86C-498B-B433-7F6272D5613D}",
+      "parentId": "",
+      "title": "Show Remaining Schedule",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Show Remaining Schedule</h1>\n\n<figure draggable=\"true\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image7.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\"><figcaption>Picture 1</figcaption></figure>\n\n<p>Use Schedule &gt; Show Remaining Schedule to review what is still due today. The display is a themed table with Time, Type, and Song/Purpose columns.</p>\n\n<p>Song entries show the scheduled play time and file name or purpose.</p>\n\n<p>Silence entries show the start time and the silence purpose through the end time.</p>\n\n<p>Played entries are removed from the remaining schedule list.</p>\n\n<p>The Time column shows seconds, such as 4:59:05 PM.</p>\n\n<p>The list is sorted by time so the next event appears in the correct order.</p>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_SHOW_REMAINING_SCHEDULE",
+      "language": "en-US",
+      "tags": "imported,docx,procedure",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:28:12.737Z"
+    },
+    {
+      "id": "{CF30F024-BF71-415B-B100-A670D33B8C55}",
+      "parentId": "",
+      "title": "Silence Schedule",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Silence Schedule</h1>\n\n<p>The Silence Schedule screen defines daily time windows when scheduled playback should be suppressed. This is useful for services, classes, meetings, funerals, or other quiet periods.</p>\n\n<p></p><ol><li>Open it from Schedule &gt; Silence Schedule.</li><li>There are twelve silence windows.</li><li>Each window can be enabled or disabled.</li><li>Each window has a purpose, start time, end time, and weekday selection.</li><li>Start time must be before end time for the same day.</li><li>Times may be entered in 12-hour or 24-hour form and may include seconds.</li><li>Save with the navigator Save check mark.</li></ol><p></p>\n\n\n\n\n\n\n\n\n\n\n\n\n\n<p>When the schedule is built, normal playback entries during an active silence window are left out of the remaining schedule. The remaining schedule display shows the silence entry itself so the operator can see why music is not scheduled during that period.</p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Daily rebuild: The schedule rebuilds after midnight, around 00:05, so silence windows and date-based changes are picked up for the new day.</th></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_SILENCE_SCHEDULE",
+      "language": "en-US",
+      "tags": "imported,docx,procedure",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:30:23.259Z"
+    },
+    {
+      "id": "{6CEF2B45-32D0-4EE4-8A3A-7488E2E03DC7}",
+      "parentId": "",
+      "title": "Group Maintenance",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Group Maintenance</h1>\n\n<p>The Group Maintenance screen manages seasonal group names, date windows, and the main group play time. It is used for holidays and seasonal collections such as Christmas, Easter, Thanksgiving, Memorial Day, Independence Day, and similar groups.</p>\n\n<p></p><ol><li>Open it from Groups &gt; Group Maintenance.</li><li>Use the grid to review group dates and play times.</li><li>Use the date and time fields to edit the selected group.</li><li>Use Recalculate Dates for Upcoming Year when holiday dates need to be refreshed.</li><li>Save changes with the navigator Save check mark.</li></ol><p></p>\n\n\n\n\n\n\n\n\n\n<p>When group information is applied to playlist songs, Version 8.1 copies the group date range and primary group play time to matching playlist rows. It also clears secondary time slots for that group so old extra times do not cause the group to play more than intended.</p>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_GROUP_MAINTENANCE",
+      "language": "en-US",
+      "tags": "imported,docx,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T11:41:54.738Z"
+    },
+    {
+      "id": "{6D9F4807-8171-4910-9B5E-E82073C398C9}",
+      "parentId": "",
+      "title": "Clock Window",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Clock Window</h1>\n\n<p>The Clock menu opens the analog clock display. It is a separate utility window and can be closed when not needed.</p>\n\n<figure draggable=\"true\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image11.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\"><figcaption>Picture 1</figcaption></figure>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_CLOCK_WINDOW",
+      "language": "en-US",
+      "tags": "imported,docx",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:29:01.962Z"
+    },
+    {
+      "id": "{45738E85-E9C5-4CF5-B2ED-30EA772B704C}",
+      "parentId": "",
+      "title": "System Settings",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>System Settings</h1>\n\n<p>System Settings stores organization information, logging status, and liturgical or special silence dates.<br><br></p><p><img src=\"Images/ImportedAssets/EditorImages/editor-image-20260709132356843-1.png\" alt=\"image\" data-align=\"none\" draggable=\"true\" title=\"Drag to move image\" class=\"\" style=\"width: 100%; height: 439px; box-sizing: border-box; margin: 0px auto; object-fit: contain;\"></p><p style=\"clear:both\"><br></p>\n\n<table class=\"doc-table\">\n<tbody><tr><th style=\"width: 271px; min-width: 271px; box-sizing: border-box;\">Area</th><th>Purpose</th></tr>\n<tr><td style=\"width: 271px; min-width: 271px; box-sizing: border-box;\">Organization Name</td><td>Name shown in program identity, splash/reporting areas, and related output.</td></tr>\n<tr><td style=\"width: 271px; min-width: 271px; box-sizing: border-box;\">Transaction Log</td><td>Turns logging on or off. It is advisable to keep it on and log events.</td></tr>\n<tr><td style=\"width: 271px; min-width: 271px; box-sizing: border-box;\">Liturgical Silence Days</td><td>Keeps dates such as Ash Wednesday, Holy Thursday through Saturday, All Souls Day, and funeral or other silence dates.</td></tr>\n<tr><td style=\"width: 271px; min-width: 271px; box-sizing: border-box;\">Recalculate Easter and All Souls Dates</td><td>Refreshes annual calculated dates for the next occurrence whether it is the current year or the next.</td></tr>\n<tr><td style=\"width: 271px; min-width: 271px; box-sizing: border-box;\">Reset Funeral Date Fields</td><td>Clears funeral or special silence date fields. While this field was intended just for funerals, it actually can be used for other events.<br></td></tr>\n</tbody></table>\n\n<p>Use the navigator Save and Cancel buttons for edits. If you close with pending changes, the form should warn you so you can save or discard them intentionally.</p>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_SYSTEM_SETTINGS",
+      "language": "en-US",
+      "tags": "imported,docx,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:30:36.916Z"
+    },
+    {
+      "id": "{12BEC85E-4E87-40D5-A8FA-548CD1DD120E}",
+      "parentId": "",
+      "title": "Email Settings and Morning Reports",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Email Settings and Morning Reports</h1>\n\n<p>Email Settings controls outbound email for reports or other messages as well as the optional morning report. The screen stores recipient lists, SMTP host and port, user name, password or app password, and test-recipient information.</p>\n\n<figure draggable=\"true\" class=\"\" style=\"width: 556px; max-width: 100%; height: auto; box-sizing: border-box;\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image6.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\" class=\"\" style=\"width: 100%; max-width: 100%; height: 414px; object-fit: contain;\"></figure>\n\n<p></p><ul><li><b>Enable Email</b> turns outbound email on or off.</li><li><b>Send Test Message</b> sends a simple test email to the test recipient.</li><li><b>Test Morning Report</b> builds and sends a morning report for verification.</li><li><b>Morning Report Recipients</b> are the addresses that receive the daily report.</li><li><b>Show Password</b> temporarily displays the stored password field so it can be checked.</li></ul><p></p>\n\n\n\n\n\n\n\n\n\n<p>The morning report reads the application log and summarizes system status, schedule status, recent plays, yesterday activity, and warnings or errors where available.&nbsp; It is then sent to the indicated recipients.</p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Email support files: Email features require the email support DLL files to be present with the portable runtime. If test email fails, check the SMTP settings, app password, recipients, and support files. These support files are in the root directory where the app is set up.</th></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_EMAIL_SETTINGS_AND_MORNING_REPORTS",
+      "language": "en-US",
+      "tags": "imported,docx,troubleshooting,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:30:51.713Z"
+    },
+    {
+      "id": "{29943BC8-A048-4874-9722-47C5696A9860}",
+      "parentId": "",
+      "title": "Themes",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Themes - Change the colors of the app</h1>\n\n<figure draggable=\"true\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image9.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\"></figure>\n\n<p>The Themes menu changes the appearance of the main form and maintenance screens. Version 8.1 centralizes theme definitions so labels, buttons, edit boxes, grids, headers, schedule dialogs, and status areas use consistent colors. There are currently eleven themes that may be used and changed as often as you like.&nbsp; Themes change colors of the panels and background and also the text.</p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Theme</th><th>General character</th></tr>\n<tr><td>Cobalt Harbor</td><td>Blue and teal accented light theme.</td></tr>\n<tr><td>Royal Current</td><td>Darker royal/copper theme.</td></tr>\n<tr><td>Emerald Glass</td><td>Soft green theme.</td></tr>\n<tr><td>Copper Dawn</td><td>Warm copper and blue combination.</td></tr>\n<tr><td>Indigo Velvet</td><td>Indigo and pink combination.</td></tr>\n<tr><td>Cranberry Silk</td><td>Cranberry and soft surface theme.</td></tr>\n<tr><td>Atlantic Teal</td><td>Teal/gold mix.</td></tr>\n<tr><td>Midnight Copper</td><td>Dark graphite/copper theme.</td></tr>\n<tr><td>Pine Gold</td><td>Green/gold combination.</td></tr>\n<tr><td>Graphite Ice</td><td>Dark graphite and cool accent theme.</td></tr>\n<tr><td>Verdant Slate</td><td>Muted green/slate theme.</td></tr>\n</tbody></table>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_THEMES",
+      "language": "en-US",
+      "tags": "imported,docx",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:32:28.859Z"
+    },
+    {
+      "id": "{7100A6EB-96E9-4A51-A824-1661F6B8BF67}",
+      "parentId": "",
+      "title": "Random Music Directory Rotation",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Random Music Directory Rotation</h1>\n\n<p>The <b>Random Music</b> feature lets placeholder \"songs\" choose a real song file from a folder. Version 8.1 has seven random directory slots. Slot 1 is the default fallback folder and is used when no random directories are set up or the song cannot be resolved. Slots 2 through 7 can override the default folder during annual date windows, provided dates (Month/Day) are entered.&nbsp; Note that if nothing on this screen is setup, no random music will play.</p><p><br></p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Slot</th><th>Purpose</th></tr>\n<tr><td>1</td><td>Default random music directory. Used when no date-window slot applies.</td></tr>\n<tr><td>2-7</td><td>Optional date-window directories. Each may have a From and To month/day range.</td></tr>\n</tbody></table><ol><li>Open Random Music &gt; Manage Directories.</li><li>Set Slot 1 to the normal default random music folder.</li><li>For Slots 2 through 7, enter a folder only when that date-window folder is needed.</li><li><span style=\"font-family: &quot;Segoe UI&quot;; font-size: 14pt; font-weight: 400;\">Enter From and To dates in month/day form, such as 07/01 and 07/31.</span></li><li>Click Browse to choose folders when helpful.</li><li>Click the navigator Save check mark.</li><li>Enter From and To dates in month/day form, such as 07/01 and 07/31.</li><li>Click Browse to choose folders when helpful.</li><li>Click the navigator Save check mark.</li><li><span style=\"font-family: &quot;Segoe UI&quot;; font-size: 12pt;\">Enter From and To dates in month/day form, such as 07/01 and 07/31.</span></li><li>Click Browse to choose folders when helpful.</li><li>Click the navigator Save check mark.<br><br></li></ol></article><article><table class=\"doc-table\" style=\"width: 803.947px;\"><tbody><tr><th>Annual dates: Random directory dates are meant to repeat each year. Even though a full date exists internally, the practical rotation is based on the month and day date window.</th></tr></tbody></table><br></article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_RANDOM_MUSIC_DIRECTORY_ROTATION",
+      "language": "en-US",
+      "tags": "imported,docx,reference",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:19:17.915Z"
+    },
+    {
+      "id": "{B2A1DB9B-3EF6-4908-84B3-295338BA358E}",
+      "parentId": "",
+      "title": "Show Log",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Show Log</h1>\n\n<figure draggable=\"true\" class=\"\" style=\"width: 589px; max-width: 100%; height: auto; box-sizing: border-box;\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image8.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\" class=\"\" style=\"width: 100%; max-width: 100%; height: 351px; object-fit: contain;\"><figcaption>Picture 1</figcaption></figure>\n\n<p>Show Log opens a themed log viewer from the main menu. It is placed between Random Music and Help. The log viewer shows Date / Time and Event columns and includes Refresh and Close buttons.</p>\n\n<p>Use Refresh to reload the log file after new activity.</p>\n\n<p>The log viewer reuses the existing window if it is already open.</p>\n\n<p>The displayed time is shown in 12-hour form with AM or PM.</p>\n\n<p>The log is read from the portable logs folder.</p>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_SHOW_LOG",
+      "language": "en-US",
+      "tags": "imported,docx",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:29:58.548Z"
+    },
+    {
+      "id": "{7893AAAD-416A-4BD0-AD43-41D4DE9CCA85}",
+      "parentId": "",
+      "title": "Manual Playback and System Volume",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Manual Playback and System Volume</h1>\n\n<figure draggable=\"true\"><img src=\"Images/ImportedAssets/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide/image10.png\" alt=\"Picture 1\" draggable=\"true\" title=\"Drag to move image\"></figure>\n\n<p>Manual playback is available even when you are not waiting for a scheduled time. Select a row in the playlist grid, then use the Media Player Control buttons.</p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Control</th><th>Action</th></tr>\n<tr><td>Play</td><td>Starts the selected song. It will stop the current playing song.</td></tr>\n<tr><td>Pause</td><td>Pauses playback and can resume playback when clicked again.</td></tr>\n<tr><td>Stop</td><td>Stops the current media playback.</td></tr>\n<tr><td>System Volume slider</td><td>Changes the Windows system volume.</td></tr>\n<tr><td>Mute / Unmute</td><td>Mutes or unmutes the Windows system audio as well as the application.</td></tr>\n</tbody></table>\n\n<p>The volume control tracks with the Windows system volume, so changes made from Windows can also be reflected in the program.</p>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_MANUAL_PLAYBACK_AND_SYSTEM_VOLUME",
+      "language": "en-US",
+      "tags": "imported,docx,procedure",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:36:10.449Z"
+    },
+    {
+      "id": "{1054F290-33EB-4CA4-A1B8-B971879C9DDC}",
+      "parentId": "",
+      "title": "Good Operating Habits",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Good Operating Habits</h1>\n\n<p><ol><li>Confirm Enable Schedule is checked before leaving the system unattended.</li><li>Use Show Remaining Schedule after important schedule, group, or silence changes.</li><li>Keep the portable drive folder clean and avoid storing temporary work files in it.</li><li>Make dated ZIP backups before major changes.</li><li>Do not move or rename audio files without updating the playlist.</li><li>Check random music folders before seasonal periods begin.</li><li>Send a test email after email password, SMTP, or recipient changes.</li><li>Review the log when diagnosing missed or unexpected playback.</li></ol></p>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_GOOD_OPERATING_HABITS",
+      "language": "en-US",
+      "tags": "imported,docx",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:36:19.865Z"
+    },
+    {
+      "id": "{A43F9E1C-CF24-48B6-AE87-42A08B8946B4}",
+      "parentId": "",
+      "title": "Final Daily Check",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Final Daily Check</h1>\n\n<ol start=\"1\"><li>Confirm the correct portable drive is inserted.</li></ol>\n<ol start=\"2\"><li>Confirm the program was started from the portable drive root.</li></ol>\n<ol start=\"3\"><li>Confirm Enable Schedule is checked.</li></ol>\n<ol start=\"4\"><li>Open Show Remaining Schedule and confirm the next expected event.</li></ol>\n<ol start=\"5\"><li>Confirm system volume and mute state.</li></ol>\n<ol start=\"6\"><li>Close maintenance windows after saving or canceling changes.</li></ol>\n</article>",
+      "status": "Approved",
+      "iconName": "auto",
+      "owner": "Auto Import",
+      "helpId": "IDH_FINAL_DAILY_CHECK",
+      "language": "en-US",
+      "tags": "imported,docx,procedure",
+      "conditions": "",
+      "updatedAt": "2026-07-09T13:48:28.402Z"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  ClientWidth = 624
+  ClientHeight = 441
+  Caption = 'Form2'
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  DesignerMasterStyle = 0
+end
