@@ -1,0 +1,50 @@
+Database comparison used for the converter
+
+Compared files:
+
+C:\Downloads\CarillonBells7_2_4 Test\CarillonBells_7_2_4\databases\carillon7_2_4.db
+C:\Downloads\CarillonBells7_2_4 Test\CarillonBells_7_2_4\databases\carillon8_1.db
+
+Tables in 7.2.4:
+
+- PL_RAND_DIR_ROTATION
+- PL_SETTINGS
+- playlist
+- seasonalgroups
+
+Tables added by 8.1:
+
+- PL_RAND_DIR_ROTATION_WIDE_BACKUP
+- silence_schedule
+
+Major schema change:
+
+7.2.4 PL_RAND_DIR_ROTATION is one wide row:
+
+- id
+- rand_music_dir1..7
+- frm_date1..7
+- to_date1..7
+
+8.1 PL_RAND_DIR_ROTATION is row-based:
+
+- slot_no
+- rand_music_dir
+- frm_date
+- to_date
+
+The converter preserves the old wide table by renaming it to
+PL_RAND_DIR_ROTATION_WIDE_BACKUP when that name is available, then creates the
+new row-based table and copies slots 1 through 7.
+
+Other observed tables have compatible columns in the provided test databases:
+
+- PL_SETTINGS
+- playlist
+- seasonalgroups
+
+The converter still checks for missing PL_SETTINGS columns and adds them when
+needed, because older field copies may not all match the supplied test copy.
+
+The converter also creates silence_schedule with 12 disabled rows, matching the
+v8.1 behavior.

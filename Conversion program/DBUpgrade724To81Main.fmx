@@ -1,0 +1,98 @@
+object frmDBUpgrade724To81: TfrmDBUpgrade724To81
+  Left = 0
+  Top = 0
+  Caption = 'Carillon Database Upgrade 7.2.4 to 8.1'
+  ClientHeight = 560
+  ClientWidth = 840
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMaster = 0
+  object lblInstructions: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 20.000000000000000000
+    Size.Width = 792.000000000000000000
+    Size.Height = 80.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Select a Carillon 7.2.4 database. The converter creates a backup beside the database, updates the schema to v8.1, converts random directory slots to the row-based format, creates silence schedule defaults, copies seasonal group dates/times to playlist rows, and writes an upgrade report.'
+    TextSettings.WordWrap = True
+  end
+  object lblDatabase: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 116.000000000000000000
+    Size.Width = 112.000000000000000000
+    Size.Height = 24.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Database:'
+  end
+  object edtDatabase: TEdit
+    Position.X = 136.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 560.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    OnChange = edtDatabaseChange
+  end
+  object btnBrowse: TButton
+    Position.X = 708.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 108.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Browse'
+    OnClick = btnBrowseClick
+  end
+  object lblStatus: TLabel
+    Position.X = 136.000000000000000000
+    Position.Y = 156.000000000000000000
+    Size.Width = 680.000000000000000000
+    Size.Height = 28.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'No database selected.'
+  end
+  object chkConfirmBackup: TCheckBox
+    Position.X = 136.000000000000000000
+    Position.Y = 192.000000000000000000
+    Size.Width = 680.000000000000000000
+    Size.Height = 28.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'I understand this utility will back up the database first, then upgrade the selected database in place.'
+  end
+  object btnUpgrade: TButton
+    Position.X = 136.000000000000000000
+    Position.Y = 232.000000000000000000
+    Size.Width = 180.000000000000000000
+    Size.Height = 36.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Back Up and Upgrade'
+    OnClick = btnUpgradeClick
+  end
+  object btnClose: TButton
+    Position.X = 328.000000000000000000
+    Position.Y = 232.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 36.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Close'
+    OnClick = btnCloseClick
+  end
+  object memoReport: TMemo
+    Position.X = 24.000000000000000000
+    Position.Y = 288.000000000000000000
+    Size.Width = 792.000000000000000000
+    Size.Height = 248.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    WordWrap = True
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 32
+    Top = 232
+  end
+end
