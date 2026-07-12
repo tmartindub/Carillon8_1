@@ -104,14 +104,24 @@ begin
     ((Label1.Width - fmVersionLabel.Width) / 2);
 end;
 procedure TForm1.ResizeFormForResolution(AForm: TForm);
+const
+  MaxWorkAreaRatio = 0.95;
 var
-  ScreenWidth, ScreenHeight: Integer;
+  ScreenWidth, ScreenHeight, ScaleFactor: Single;
 begin
-  // Get the current screen resolution
-  ScreenWidth := Round(Screen.WorkAreaWidth);
-  ScreenHeight := Round(Screen.WorkAreaHeight);
-  // Optionally, center the form on the screen
-  AForm.left := (ScreenWidth - AForm.Width) div 2;
+  ScreenWidth := Screen.WorkAreaWidth;
+  ScreenHeight := Screen.WorkAreaHeight;
+  ScaleFactor := Min(1.0, Min((ScreenWidth * MaxWorkAreaRatio) / AForm.Width,
+    (ScreenHeight * MaxWorkAreaRatio) / AForm.Height));
+
+  if ScaleFactor < 1.0 then
+  begin
+    AForm.WindowState := TWindowState.wsNormal;
+    AForm.Width := Round(AForm.Width * ScaleFactor);
+    AForm.Height := Round(AForm.Height * ScaleFactor);
+  end;
+
+  AForm.Left := Round((ScreenWidth - AForm.Width) / 2);
   AForm.Top := Round((ScreenHeight - AForm.Height) / 2);
 end;
 end.
