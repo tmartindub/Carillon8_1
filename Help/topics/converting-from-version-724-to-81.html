@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Converting From Version 7.2.4 to 8.1</title><link rel="stylesheet" href="../style.css"></head><body class="topic-page"><main><div class="doc-topic" style="display:block;">
+<article>
+<h1>Converting From Version 7.2.4 to 8.1</h1>
+
+<p>Use the database conversion utility when moving an existing Carillon 7.2.4 database to Westminster Chimes and Carillon Bells 8.1. The conversion keeps the existing playlist, seasonal groups, settings, random music folders, and full song paths, then adds the database structures required by version 8.1.</p>
+
+<table class="doc-table">
+<tbody><tr><th>Important: Close Carillon before running the database converter. Do not convert the database while the main program is open.</th></tr>
+</tbody></table>
+
+<ol>
+<li>Open the version 8.1 portable drive or folder.</li>
+<li>Start <b>CarillonDBUpgrade724To81.exe</b> from the portable drive root when possible.</li>
+<li>Click <b>Browse</b> and select the database to upgrade. In a normal portable installation this is <b>databases\carillon.db</b>.</li>
+<li>Confirm the status line reports the old 7.2.4 wide random-directory format.</li>
+<li>Check the confirmation box.</li>
+<li>Click <b>Back Up and Upgrade</b>.</li>
+<li>Wait for the completion message and note the backup and report locations.</li>
+<li>Start Carillon 8.1 from the portable drive root and review Groups, Random Music, Silence Schedule, and Show Remaining Schedule before unattended use.</li>
+</ol>
+
+<h2>What the converter changes</h2>
+<ul>
+<li>Creates a dated database backup under <b>databasesackup</b>.</li>
+<li>Converts Random Music Directory Rotation to the version 8.1 seven-slot row format.</li>
+<li>Adds the Silence Schedule table with twelve disabled windows.</li>
+<li>Adds missing version 8.1 settings fields when needed.</li>
+<li>Copies seasonal group dates and the main group play time to matching playlist songs.</li>
+<li>Normalizes stored time values so seconds are kept.</li>
+<li>Writes a conversion report under <b>logs</b>.</li>
+</ul>
+
+<p>The complete conversion procedure is documented in <b>ConversionTo8_1.docx</b>.</p>
+</article>
+</div></main></body></html>

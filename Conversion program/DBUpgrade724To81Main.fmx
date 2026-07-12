@@ -8,7 +8,6 @@ object frmDBUpgrade724To81: TfrmDBUpgrade724To81
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
-  DesignerMaster = 0
   object lblInstructions: TLabel
     Position.X = 24.000000000000000000
     Position.Y = 20.000000000000000000

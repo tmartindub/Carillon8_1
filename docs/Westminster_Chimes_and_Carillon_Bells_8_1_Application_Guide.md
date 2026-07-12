@@ -552,3 +552,24 @@ Key folders:
 - sound libraries: `Songs\`, `Music\`, `Random_songs\`, `Random_songs-2\`
 
 This document is intended to give a future maintainer or operator enough context to understand how the application is organized, how it runs, and where to begin when changing behavior.
+
+## 21. 7.2.4 to 8.1 Database Conversion Utility
+
+Version 8.1 includes a separate conversion utility for users moving from Carillon 7.2.4 to the 8.1 portable database layout.
+
+Project files:
+
+- `Conversion program\CarillonDBUpgrade724To81.dproj`
+- `Conversion program\CarillonDBUpgrade724To81.dpr`
+- `Conversion program\DBUpgrade724To81Main.pas`
+- `Conversion program\DBUpgrade724To81Main.fmx`
+
+The converter upgrades a selected SQLite database in place after creating a dated backup under `databases\backup`. It converts `PL_RAND_DIR_ROTATION` from the old one-row wide table to the 8.1 row-based slot table, creates `silence_schedule` with twelve disabled rows, adds missing settings columns, copies seasonal group dates and the main group play time into matching playlist rows, normalizes time fields so seconds are preserved, and writes a report under `logs`.
+
+Operational notes:
+
+- Close Carillon before running the converter.
+- Select the 7.2.4 `databases\carillon.db` file.
+- Run the converter from the portable drive root when possible so logs are written to the expected `logs` folder.
+- After conversion, start Carillon 8.1 from the portable drive root and review Groups, Random Music, Silence Schedule, and Show Remaining Schedule before enabling unattended playback.
+

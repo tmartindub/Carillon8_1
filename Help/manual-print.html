@@ -89,6 +89,37 @@
 <tbody><tr><th style="border:1px solid #333;padding:7px 10px;vertical-align:top;text-align:left;line-height:1.35;background:#1f6f54;color:#ffffff;font-weight:bold;height:auto;overflow:visible;">Important: If the program reports that it cannot open the database file, close it and restart it from the portable drive root. Opening the executable from another working directory can break relative paths and the application will not start.</th></tr>
 </tbody></table>
 </div><hr><div class="doc-topic" style="display:block;">
+<h1>Converting From Version 7.2.4 to 8.1</h1>
+
+<p>Use the database conversion utility when moving an existing Carillon 7.2.4 database to Westminster Chimes and Carillon Bells 8.1. The conversion keeps the existing playlist, seasonal groups, settings, random music folders, and full song paths, then adds the database structures required by version 8.1.</p>
+
+<table class="doc-table">
+<tbody><tr><th>Important: Close Carillon before running the database converter. Do not convert the database while the main program is open.</th></tr>
+</tbody></table>
+
+<ol>
+<li>Open the version 8.1 portable drive or folder.</li>
+<li>Start <b>CarillonDBUpgrade724To81.exe</b> from the portable drive root when possible.</li>
+<li>Click <b>Browse</b> and select the database to upgrade. In a normal portable installation this is <b>databases\carillon.db</b>.</li>
+<li>Confirm the status line reports the old 7.2.4 wide random-directory format.</li>
+<li>Check the confirmation box.</li>
+<li>Click <b>Back Up and Upgrade</b>.</li>
+<li>Wait for the completion message and note the backup and report locations.</li>
+<li>Start Carillon 8.1 from the portable drive root and review Groups, Random Music, Silence Schedule, and Show Remaining Schedule before unattended use.</li>
+</ol>
+
+<h2>What the converter changes</h2>
+<ul>
+<li>Creates a dated database backup under <b>databasesackup</b>.</li>
+<li>Converts Random Music Directory Rotation to the version 8.1 seven-slot row format.</li>
+<li>Adds the Silence Schedule table with twelve disabled windows.</li>
+<li>Adds missing version 8.1 settings fields when needed.</li>
+<li>Copies seasonal group dates and the main group play time to matching playlist songs.</li>
+<li>Normalizes stored time values so seconds are kept.</li>
+<li>Writes a conversion report under <b>logs</b>.</li>
+</ul>
+
+<p>The complete conversion procedure is documented in <b>ConversionTo8_1.docx</b>.</p>
 <h1>Main Screen Overview</h1>
 
 <p>The main screen is the daily operating screen. It shows the grouped song list, the schedule editor for the selected song, manual playback controls, the system volume control, the schedule status, and the main menu.</p>

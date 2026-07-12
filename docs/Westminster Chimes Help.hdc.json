@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "New Help Project",
   "version": "1.0",
   "company": "Your Company",
@@ -337,6 +337,13 @@
       "tags": "imported,docx,troubleshooting,procedure",
       "conditions": "",
       "updatedAt": "2026-07-09T08:01:55.669Z"
+    },
+    {
+      "title": "Converting From Version 7.2.4 to 8.1",
+      "body": "<!-- HDC_HTML -->\r\n<article>\n<h1>Converting From Version 7.2.4 to 8.1</h1>\n\n<p>Use the database conversion utility when moving an existing Carillon 7.2.4 database to Westminster Chimes and Carillon Bells 8.1. The conversion keeps the existing playlist, seasonal groups, settings, random music folders, and full song paths, then adds the database structures required by version 8.1.</p>\n\n<table class=\"doc-table\">\n<tbody><tr><th>Important: Close Carillon before running the database converter. Do not convert the database while the main program is open.</th></tr>\n</tbody></table>\n\n<ol>\n<li>Open the version 8.1 portable drive or folder.</li>\n<li>Start <b>CarillonDBUpgrade724To81.exe</b> from the portable drive root when possible.</li>\n<li>Click <b>Browse</b> and select the database to upgrade. In a normal portable installation this is <b>databases\\carillon.db</b>.</li>\n<li>Confirm the status line reports the old 7.2.4 wide random-directory format.</li>\n<li>Check the confirmation box.</li>\n<li>Click <b>Back Up and Upgrade</b>.</li>\n<li>Wait for the completion message and note the backup and report locations.</li>\n<li>Start Carillon 8.1 from the portable drive root and review Groups, Random Music, Silence Schedule, and Show Remaining Schedule before unattended use.</li>\n</ol>\n\n<h2>What the converter changes</h2>\n<ul>\n<li>Creates a dated database backup under <b>databases\backup</b>.</li>\n<li>Converts Random Music Directory Rotation to the version 8.1 seven-slot row format.</li>\n<li>Adds the Silence Schedule table with twelve disabled windows.</li>\n<li>Adds missing version 8.1 settings fields when needed.</li>\n<li>Copies seasonal group dates and the main group play time to matching playlist songs.</li>\n<li>Normalizes stored time values so seconds are kept.</li>\n<li>Writes a conversion report under <b>logs</b>.</li>\n</ul>\n\n<p>The complete conversion procedure is documented in <b>ConversionTo8_1.docx</b>.</p>\n</article>",
+      "tags": "imported,docx,procedure,troubleshooting",
+      "helpId": "IDH_CONVERTING_FROM_VERSION_7_2_4_TO_8_1",
+      "owner": "Auto Import"
     },
     {
       "id": "{8EC744B3-8B44-49BB-A6CC-BD8B02EC4814}",

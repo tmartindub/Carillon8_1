@@ -81,3 +81,9 @@ Copyright (c) 2026 Tommy Martin.
 Tommy Martin
 - Supports Delphi 12 and later. The current project was converted with the VCL2FMX Migration Assistant and enhanced with Delphi 13.1.
 
+## Upgrading a 7.2.4 Database to 8.1
+
+Version 8.1 includes a separate database conversion utility for existing Carillon 7.2.4 users. Close Carillon, run `CarillonDBUpgrade724To81.exe`, select the old `databases\carillon.db`, confirm the backup, and run the upgrade. The converter creates a dated database backup, updates the random music rotation table, adds the silence schedule table, copies seasonal group dates/times to matching playlist songs, normalizes time fields, and writes a report under `logs`.
+
+Detailed user-facing instructions are in `docs\guides\ConversionTo8_1.docx`.
+
