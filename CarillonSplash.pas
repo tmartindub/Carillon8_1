@@ -55,6 +55,8 @@ type
     { Private declarations }
     procedure ResizeFormForResolution(AForm: TForm);
     procedure FormCreateHandler(Sender: TObject);
+    procedure FormResizeHandler(Sender: TObject);
+    procedure PositionSplashControls;
   public
     { Public declarations }
     OrgName: string;
@@ -67,6 +69,7 @@ implementation
 constructor TForm1.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner); // Call the inherited constructor
+  OnResize := FormResizeHandler;
   FormCreateHandler(Self);
 end;
 procedure TForm1.FormCreateHandler(Sender: TObject);
@@ -92,8 +95,17 @@ begin
   lblOrgName.Visible := True;
   lblOrgName.TextAlign := TTextAlign.Center;
   lblOrgName.VertTextAlign := TTextAlign.Center;
-  // Resize / scale form for current resolution
   ResizeFormForResolution(Self);
+  PositionSplashControls;
+end;
+
+procedure TForm1.FormResizeHandler(Sender: TObject);
+begin
+  PositionSplashControls;
+end;
+
+procedure TForm1.PositionSplashControls;
+begin
   Label1.Position.X := (ClientWidth - Label1.Width) / 2;
   Panel1.Width := Round(lblOrgName.Width + 24);
   Panel1.Height := Round(lblOrgName.Height + 12);
@@ -104,24 +116,15 @@ begin
     ((Label1.Width - fmVersionLabel.Width) / 2);
 end;
 procedure TForm1.ResizeFormForResolution(AForm: TForm);
-const
-  MaxWorkAreaRatio = 0.95;
 var
-  ScreenWidth, ScreenHeight, ScaleFactor: Single;
+  ScreenWidth, ScreenHeight: Integer;
 begin
-  ScreenWidth := Screen.WorkAreaWidth;
-  ScreenHeight := Screen.WorkAreaHeight;
-  ScaleFactor := Min(1.0, Min((ScreenWidth * MaxWorkAreaRatio) / AForm.Width,
-    (ScreenHeight * MaxWorkAreaRatio) / AForm.Height));
+  if AForm.WindowState = TWindowState.wsMaximized then
+    Exit;
 
-  if ScaleFactor < 1.0 then
-  begin
-    AForm.WindowState := TWindowState.wsNormal;
-    AForm.Width := Round(AForm.Width * ScaleFactor);
-    AForm.Height := Round(AForm.Height * ScaleFactor);
-  end;
-
-  AForm.Left := Round((ScreenWidth - AForm.Width) / 2);
-  AForm.Top := Round((ScreenHeight - AForm.Height) / 2);
+  ScreenWidth := Round(Screen.WorkAreaWidth);
+  ScreenHeight := Round(Screen.WorkAreaHeight);
+  AForm.Left := Max(0, Round((ScreenWidth - AForm.Width) / 2));
+  AForm.Top := Max(0, Round((ScreenHeight - AForm.Height) / 2));
 end;
 end.
