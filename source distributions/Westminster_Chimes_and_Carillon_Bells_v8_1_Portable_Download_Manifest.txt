@@ -1,0 +1,36 @@
+Westminster Chimes and Carillon Bells v8.1 Portable Flash Drive Package
+
+Download all three ZIP files from the GitHub release and extract them to the
+root of the flash drive. Allow Windows to merge folders when extracting the
+second and third ZIP files.
+
+Recommended extraction order:
+
+1. Westminster_Chimes_and_Carillon_Bells_v8_1_Portable_1_Core.zip
+2. Westminster_Chimes_and_Carillon_Bells_v8_1_Portable_2_Songs_A.zip
+3. Westminster_Chimes_and_Carillon_Bells_v8_1_Portable_3_Songs_B.zip
+
+The package includes an empty logs folder. Carillon creates the play log when
+needed.
+
+Excluded from the customer package:
+
+- System Volume Information
+- Carillon.lock
+- desktop.ini
+- *.db-journal
+- existing log files
+
+Package hashes:
+
+Westminster_Chimes_and_Carillon_Bells_v8_1_Portable_1_Core.zip
+Size: 1053.67 MB
+SHA256: B2C0ABC2C8994D76A721E1DB5C2A72737E7F8DB7F72B3ADAC1CDD3B29369A20B
+
+Westminster_Chimes_and_Carillon_Bells_v8_1_Portable_2_Songs_A.zip
+Size: 1637.98 MB
+SHA256: 720531A95BF8E8ADD8F4F39CA9EB24AE47C17F70D9C3F80BE9DD0CDFF4D4B2CF
+
+Westminster_Chimes_and_Carillon_Bells_v8_1_Portable_3_Songs_B.zip
+Size: 646.99 MB
+SHA256: D200713EE9338B0FCDF6971BCC87709C8CCE011A8393BD4BFDEDCBE062307ACE
