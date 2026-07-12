@@ -1,6 +1,8 @@
 # Carillon v8.1
 
-Carillon v8.1, also documented as Westminster Chimes and Carillon Bells 8.1, is a portable Delphi FireMonkey application for scheduled church-bell and music playback.
+Carillon v8.1, also documented as Westminster Chimes and Carillon Bells 8.1, is a portable Delphi FireMonkey (FMX) application
+for scheduled church-bell and music playback. It was converted from VCL by the VCL2FMX Migration assistant. It was then enhanced
+to its present state. It was based on VCL version 7.2.4 .
 
 The application is designed for churches, chapels, schools, and other organizations that need a Windows-based system for automatic chimes, bells, seasonal music, and daily playback schedules.
 
@@ -77,5 +79,5 @@ Copyright (c) 2026 Tommy Martin.
 ## Author
 
 Tommy Martin
-- Supports Delphi 12 and later. The current project is being built on Delphi 13.1.
+- Supports Delphi 12 and later. The current project was converted with the VCL2FMX Migration Assistant and enhanced with Delphi 13.1.
 
