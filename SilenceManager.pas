@@ -1,5 +1,5 @@
 unit SilenceManager;
-
+
 // Version: 8.1
 interface
 
@@ -378,7 +378,7 @@ begin
       if ParseSilenceTime(Query.FieldByName('start_time').AsString,
         Rule.StartTime) and
         ParseSilenceTime(Query.FieldByName('end_time').AsString,
-        Rule.EndTime) and (CompareTime(Rule.StartTime, Rule.EndTime) < 0) then
+        Rule.EndTime) and (CompareTime(Rule.StartTime, Rule.EndTime) <> 0) then
       begin
         Rule.WindowId := Query.FieldByName('silence_id').AsInteger;
         Rule.Purpose := Trim(Query.FieldByName('Purpose').AsString);

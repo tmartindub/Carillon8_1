@@ -982,7 +982,7 @@ object fmDailyPlayList: TfmDailyPlayList
     Top = 115
   end
   object tmRebuildSched: TTimer
-    Interval = 60000
+    Interval = 30000
     OnTimer = tmRebuildSchedTimer
     Left = 1464
     Top = 112

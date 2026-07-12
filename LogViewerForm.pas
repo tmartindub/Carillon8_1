@@ -24,6 +24,7 @@ type
     procedure RefreshButtonClick(Sender: TObject);
     procedure BuildControls;
     procedure LoadLogRows;
+    procedure RepositionButtons;
     procedure ResizeGridColumns;
   public
     constructor Create(AOwner: TComponent); override;
@@ -138,6 +139,16 @@ begin
   FCloseButton.TextSettings.Font.Size := 14;
   FCloseButton.Text := 'Close';
   FCloseButton.OnClick := CloseButtonClick;
+  RepositionButtons;
+end;
+
+procedure TfrmLogViewer.RepositionButtons;
+begin
+  if Assigned(FRefreshButton) and Assigned(FCloseButton) then
+  begin
+    FRefreshButton.Position.X := (Width / 2) - 130;
+    FCloseButton.Position.X := (Width / 2) + 20;
+  end;
 end;
 
 procedure TfrmLogViewer.ResizeGridColumns;
@@ -215,6 +226,7 @@ end;
 procedure TfrmLogViewer.FormResize(Sender: TObject);
 begin
   ResizeGridColumns;
+  RepositionButtons;
 end;
 
 procedure TfrmLogViewer.CloseButtonClick(Sender: TObject);

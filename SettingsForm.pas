@@ -663,7 +663,6 @@ begin
   chkLogOnOff.IsChecked := (chkLog = 1);
   chkLogOnOff.OnChange := SettingsControlChanged;
   setFDQuery1.Connection := setFDConnection1;
-  setFDConnection1.connected := True;
   setFDQuery1.SQL.Text := 'SELECT * FROM pl_settings';
   setFDQuery1.Open;
   LoadSilenceSettings;

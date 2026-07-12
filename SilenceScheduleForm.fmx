@@ -41,7 +41,8 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Text = 
       'Enter information in these fields to silence the bell system on ' +
       'selected days. '#13#10'Times may be entered as 10:00 AM or 14:05. A co' +
-      'lon is required in the times.'
+      'lon is required in the times. Overnight windows may use a start ti' +
+      'me later than the end time.'
     TabOrder = 1
   end
   object lblEntry: TLabel

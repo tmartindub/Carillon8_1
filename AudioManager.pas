@@ -245,7 +245,9 @@ begin
   begin
     HR := FEndpointVolume.SetMute(bMute, @AudioManagerEventContext);
     if Failed(HR) then
-      OutputDebugString(PChar(Format('SetMute failed with HR: $%.8x', [HR])))
+    begin
+      DesiredApplied := False;
+    end
     else
     begin
       if TryGetEndpointMute(currentMute) then
@@ -258,8 +260,6 @@ begin
         DesiredApplied := True;
         UpdateMuteState(Value);
       end;
-      OutputDebugString(PChar(Format('SetMute succeeded. Value = %d',
-        [bMute])));
     end;
   end;
 

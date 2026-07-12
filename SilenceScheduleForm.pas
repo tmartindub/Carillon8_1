@@ -456,9 +456,9 @@ begin
       Exit(False);
     end;
 
-    if CompareTime(StartTime, EndTime) >= 0 then
+    if CompareTime(StartTime, EndTime) = 0 then
     begin
-      ShowMessage('Start time must be before end time for the current day.');
+      ShowMessage('Start time and end time cannot be the same.');
       edEndTime.SetFocus;
       Exit(False);
     end;

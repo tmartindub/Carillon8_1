@@ -2,7 +2,7 @@ program Carillon;
 
 // Westminster Chimes and Carillon Bells
 // Version: 8.1
-// © 2025 All rights reserved
+// © 2026 All rights reserved
 
 uses
   FMX.Forms,

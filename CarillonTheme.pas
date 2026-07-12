@@ -575,6 +575,11 @@ var
       Exit;
     if Node is TShape then
       TShape(Node).Stroke.Thickness := AStrokeThickness;
+    if Node is TRectangle then
+    begin
+      TRectangle(Node).XRadius := AXRadius;
+      TRectangle(Node).YRadius := AYRadius;
+    end;
     for J := 0 to Node.ChildrenCount - 1 do
       ApplyMetricsToStyleTree(Node.Children[J]);
   end;
