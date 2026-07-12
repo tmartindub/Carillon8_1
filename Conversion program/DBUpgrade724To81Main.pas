@@ -79,6 +79,7 @@ implementation
 
 uses
   FireDAC.DApt,
+  FireDAC.FMXUI.Wait,
   FireDAC.Stan.Async,
   FireDAC.Stan.Error,
   FireDAC.Stan.Intf,
