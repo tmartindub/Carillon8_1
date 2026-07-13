@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Westminster Chimes and Carillon Bells 8.1 portable church bell scheduling software for Windows.">
+  <title>Westminster Chimes &amp; Carillon Bells 8.1</title>
+  <style>
+    :root {
+      --ink: #132f3a;
+      --muted: #52646c;
+      --teal: #176f83;
+      --teal-dark: #0e4d5d;
+      --blue: #2d63ae;
+      --gold: #c89b36;
+      --gold-dark: #8b641a;
+      --paper: #ffffff;
+      --mist: #edf4f5;
+      --line: #c8d6da;
+      --shadow: 0 12px 30px rgba(17, 47, 58, 0.14);
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--blue);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 100;
+      padding: 0.75rem 1rem;
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.97);
+    }
+
+    .header-inner,
+    .section-inner,
+    .hero-inner,
+    .footer-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .header-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      color: var(--ink);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover {
+      color: var(--teal);
+    }
+
+    .hero {
+      min-height: min(720px, calc(100vh - 74px));
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background-image: url("Images/ImportedAssets/EditorImages/editor-image-20260704144455077-1.png");
+      background-position: center;
+      background-size: cover;
+      box-shadow: inset 0 0 0 1000px rgba(8, 32, 43, 0.7);
+    }
+
+    .hero-inner {
+      padding: 5rem 0 6rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.8rem;
+      color: #f3cc6c;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .hero h1 {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(2.7rem, 7vw, 5.2rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 710px;
+      margin: 1.4rem 0 0;
+      font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.1rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      color: #fff;
+      background: var(--blue);
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: #214f8f;
+    }
+
+    .button-gold {
+      color: #162c34;
+      background: #f1c85f;
+    }
+
+    .button-gold:hover {
+      background: #ddb042;
+    }
+
+    .button-outline {
+      border-color: currentColor;
+      color: var(--teal-dark);
+      background: transparent;
+    }
+
+    .button-outline:hover {
+      color: #fff;
+      background: var(--teal-dark);
+    }
+
+    .release-strip {
+      border-top: 5px solid var(--gold);
+      color: #fff;
+      background: var(--teal-dark);
+    }
+
+    .release-strip .section-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.35rem 0;
+    }
+
+    .release-strip strong {
+      display: block;
+      color: #f3cc6c;
+      font-size: 1.15rem;
+    }
+
+    .release-strip p {
+      margin: 0.1rem 0 0;
+    }
+
+    section {
+      scroll-margin-top: 86px;
+    }
+
+    .content-section {
+      padding: 5rem 0;
+    }
+
+    .content-section.alt {
+      background: var(--mist);
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 2.2rem;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 0.7rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .feature {
+      min-height: 210px;
+      padding: 1.4rem;
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--teal);
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .feature-number {
+      color: var(--gold-dark);
+      font-weight: 800;
+    }
+
+    .feature h3 {
+      margin: 0.35rem 0 0.55rem;
+      font-size: 1.15rem;
+      letter-spacing: 0;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .download-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .download-row {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.8fr) minmax(280px, 1.6fr) auto;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .download-row h3,
+    .download-row p {
+      margin: 0;
+    }
+
+    .download-row p {
+      color: var(--muted);
+    }
+
+    .notice {
+      margin-top: 1.4rem;
+      padding: 1rem 1.15rem;
+      border-left: 5px solid var(--gold);
+      background: #fff8e6;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .two-column h2,
+    .hardware h2 {
+      margin-top: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .sample-list {
+      margin: 1.5rem 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .sample-list li {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sample-list a {
+      font-weight: 700;
+    }
+
+    .hardware-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .hardware-item {
+      padding-top: 1rem;
+      border-top: 5px solid var(--gold);
+    }
+
+    .hardware-item span {
+      color: var(--gold-dark);
+      font-weight: 800;
+    }
+
+    .hardware-item h3 {
+      margin: 0.35rem 0 0.5rem;
+      letter-spacing: 0;
+    }
+
+    .contact-band {
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .contact-band .two-column {
+      align-items: center;
+    }
+
+    .contact-band p {
+      color: #d8e4e7;
+    }
+
+    .contact-link {
+      color: #f3cc6c;
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .site-footer {
+      padding: 2rem 0;
+      border-top: 1px solid #39515a;
+      color: #d8e4e7;
+      background: var(--ink);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .site-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 880px) {
+      .site-header {
+        position: static;
+      }
+
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 1rem 0;
+      }
+
+      .site-nav {
+        gap: 0.9rem;
+      }
+
+      .hero {
+        min-height: 620px;
+      }
+
+      .feature-grid,
+      .hardware-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .download-row {
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+      }
+
+      .download-row .button {
+        justify-self: start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner,
+      .section-inner,
+      .hero-inner,
+      .footer-inner {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .brand {
+        font-size: 0.95rem;
+      }
+
+      .site-nav {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+      }
+
+      .hero {
+        min-height: 590px;
+        background-position: 31% center;
+      }
+
+      .hero-inner {
+        padding: 4rem 0 5rem;
+      }
+
+      .release-strip .section-inner,
+      .two-column {
+        align-items: stretch;
+        flex-direction: column;
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid,
+      .hardware-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-section {
+        padding: 3.8rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Westminster Chimes and Carillon Bells home">
+        <img src="Carillon_Icon.ico" alt="">
+        <span>Westminster Chimes &amp; Carillon Bells</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#whats-new">What's New</a>
+        <a href="#downloads">Software</a>
+        <a href="#music">Music</a>
+        <a href="#hardware">Hardware</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <p class="eyebrow">Portable Windows bell software for churches and organizations</p>
+        <h1 id="hero-title">Westminster Chimes &amp; Carillon Bells 8.1</h1>
+        <p class="hero-copy">Version 8.1 is now available with stronger scheduling, annual music rotation, schedule-aware silence windows, clearer displays, and a guided converter for existing v7.2.4 databases.</p>
+        <div class="hero-actions">
+          <a class="button button-gold" href="https://github.com/tmartindub/Carillon8_1/releases/tag/v8.1.0">Download Version 8.1</a>
+          <a class="button" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide.pdf">Read the User Guide</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="release-strip" aria-label="Download announcement">
+      <div class="section-inner">
+        <div>
+          <strong>Software downloads have moved to GitHub.</strong>
+          <p>Use the official v8.1 release page for the current program, converter, and documentation.</p>
+        </div>
+        <a class="button button-gold" href="https://github.com/tmartindub/Carillon8_1/releases/tag/v8.1.0">Open GitHub Downloads</a>
+      </div>
+    </section>
+
+    <section class="content-section" id="whats-new">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">A substantial portable-edition update</p>
+          <h2>What's new in version 8.1</h2>
+          <p>The familiar automatic bell system remains, with practical improvements focused on scheduling accuracy, easier maintenance, and clearer day-to-day operation.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature-number">01</span>
+            <h3>More precise scheduling</h3>
+            <p>Scheduled times retain seconds, display in familiar 12-hour time, and rebuild cleanly after playlist or maintenance changes.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">02</span>
+            <h3>Schedule-aware silence</h3>
+            <p>Up to twelve recurring silence windows prevent events from being scheduled during quiet periods while system mute remains available as protection.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">03</span>
+            <h3>Seven annual music rotations</h3>
+            <p>Choose a default random-music folder plus six dated overrides that return automatically every year.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">04</span>
+            <h3>Clearer operation screens</h3>
+            <p>Larger playlist text, improved time entry, labeled navigators, theme-aware schedules, and readable status information simplify regular use.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">05</span>
+            <h3>Built-in activity review</h3>
+            <p>Open the Carillon log inside the program, review recent activity, and use optional morning email reports for operational oversight.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">06</span>
+            <h3>Guided v7.2.4 conversion</h3>
+            <p>A separate converter backs up and upgrades an existing v7.2.4 database for the v8.1 schedule, silence, and rotation features.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section alt" id="downloads">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Official software and guides</p>
+          <h2>Choose the right v8.1 download</h2>
+          <p>The complete program and documentation are published on GitHub. Bell and hymn music remain available separately from this website.</p>
+        </div>
+
+        <div class="download-list">
+          <article class="download-row">
+            <h3>New or complete installation</h3>
+            <p>The full portable package includes the program, required support files, sample database, help, converter, documentation, and standard Music folder.</p>
+            <a class="button" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/CarillonBells_8_1_Portable_Full.zip">Download Full Package</a>
+          </article>
+          <article class="download-row">
+            <h3>Upgrade from v7.2.4</h3>
+            <p>Read the conversion instructions first, close Carillon, and use the supplied converter to back up and upgrade the existing database.</p>
+            <a class="button" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/CarillonBells_7_2_4_to_8_1_Converter.zip">Download Converter</a>
+          </article>
+          <article class="download-row">
+            <h3>User documentation</h3>
+            <p>The v8.1 User Guide explains setup, scheduling, groups, random music, silence windows, email, themes, logs, and routine operation.</p>
+            <a class="button" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide.pdf">Open User Guide</a>
+          </article>
+          <article class="download-row">
+            <h3>Conversion instructions</h3>
+            <p>Step-by-step instructions for moving an existing v7.2.4 portable installation and database to version 8.1.</p>
+            <a class="button" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/ConversionTo8_1.pdf">Open Conversion Guide</a>
+          </article>
+        </div>
+
+        <div class="notice">
+          <strong>GitHub note:</strong> Use the files named above. The automatically listed "Source code" ZIP and TAR.GZ files are for programmers and are not Carillon installation packages.
+        </div>
+
+        <div class="notice">
+          <strong>Portable setup:</strong> Extract the package, copy its contents to the root of a USB flash drive, and start Carillon from that drive using <code>start_carillon.vbs</code> or <code>Carillon.exe</code>. Windows 10 or later is recommended.
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="music">
+      <div class="section-inner two-column">
+        <div>
+          <p class="eyebrow">Music remains here</p>
+          <h2>More than 5,000 bell and hymn arrangements</h2>
+          <p>The software download has moved to GitHub, but the optional bell music collections remain on the Carillon Bells website. Browse alphabetic music groups and denomination-specific hymn collections, then add the selections appropriate for your church or organization.</p>
+          <p><a class="button button-outline" href="https://echurchsites.wixsite.com/carillonbells/downloads">Browse the Music Library</a></p>
+        </div>
+        <div>
+          <h2>Hear the sound</h2>
+          <p>These sample recordings open separately so you can hear the character of Westminster chimes and traditional carillon music.</p>
+          <ul class="sample-list">
+            <li><a href="https://static.wixstatic.com/mp3/015e9d_eb036993d99f4b89a6fea1aa9739da0a.mp3">Westminster Chimes - Five O'Clock Strike</a></li>
+            <li><a href="https://static.wixstatic.com/mp3/015e9d_ea38d14460bf4cc8b1fa907db9fe9404.mp3">Carillon Hymn - Nearer My God To Thee</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section alt hardware" id="hardware">
+      <div class="section-inner">
+        <p class="eyebrow">Complete the outdoor bell system</p>
+        <h2>Essential hardware</h2>
+        <p>Carillon 8.1 works with standard Windows audio equipment and can usually be connected to hardware already in place. Consult an audio professional to match components and safely configure outdoor coverage.</p>
+        <div class="hardware-grid">
+          <article class="hardware-item">
+            <span>01 / Outdoor speakers</span>
+            <h3>Weather-resistant horn speakers</h3>
+            <p>Use one to four suitable outdoor units to provide clear coverage around the church or organization.</p>
+          </article>
+          <article class="hardware-item">
+            <span>02 / Amplification</span>
+            <h3>Properly matched amplifier</h3>
+            <p>Select an amplifier capable of driving the installed speakers clearly and reliably at the required distance.</p>
+          </article>
+          <article class="hardware-item">
+            <span>03 / Connectivity</span>
+            <h3>Durable wiring and distribution</h3>
+            <p>Use appropriate speaker wire and any needed splitters or controls for local monitoring and outdoor playback.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-inner two-column">
+        <div>
+          <p class="eyebrow">Keep the equipment you already own</p>
+          <h2>Upgrade the software, not the whole bell system</h2>
+          <p>Westminster Chimes and Carillon Bells works with most Windows sound cards and conventional amplifiers and speakers. Organizations replacing older bell software can often keep their existing audio hardware.</p>
+        </div>
+        <div>
+          <h2>Portable and free</h2>
+          <p>No traditional installer is required. The application runs from a USB flash drive, stores its database and supporting files with the program, and remains free to use and share with no subscription or premium tier.</p>
+          <p><a class="button button-outline" href="https://github.com/tmartindub/Carillon8_1/releases/tag/v8.1.0">View the v8.1 Release</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section contact-band" id="contact">
+      <div class="section-inner two-column">
+        <div>
+          <p class="eyebrow">Inquiries</p>
+          <h2>Questions about Westminster Chimes &amp; Carillon Bells 8.1?</h2>
+          <p>General questions, comments, and suggestions are addressed as time permits. Limited support is available.</p>
+        </div>
+        <div>
+          <p>Email</p>
+          <a class="contact-link" href="mailto:churchesite@gmail.com">churchesite@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Westminster Chimes &amp; Carillon Bells v8.1 Portable Edition</p>
+      <p>&copy; 2026 Westminster Chimes and Carillon Bells. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
