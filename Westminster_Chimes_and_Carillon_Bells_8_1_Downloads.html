@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Download Westminster Chimes and Carillon Bells 8.1, user guides, database converter, and optional bell music collections.">
+  <title>Downloads | Westminster Chimes &amp; Carillon Bells 8.1</title>
+  <style>
+    :root {
+      --ink: #132f3a;
+      --muted: #52646c;
+      --teal: #176f83;
+      --teal-dark: #0e4d5d;
+      --blue: #2d63ae;
+      --blue-dark: #214f8f;
+      --gold: #c89b36;
+      --gold-pale: #fff6dc;
+      --paper: #ffffff;
+      --mist: #edf4f5;
+      --line: #c8d6da;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--blue);
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 100;
+      padding: 0.75rem 1rem;
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.97);
+    }
+
+    .header-inner,
+    .section-inner,
+    .hero-inner,
+    .footer-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .header-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      color: var(--ink);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover {
+      color: var(--teal);
+    }
+
+    .hero {
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background-image: url("Images/ImportedAssets/EditorImages/editor-image-20260704144455077-1.png");
+      background-position: center;
+      background-size: cover;
+      box-shadow: inset 0 0 0 1000px rgba(8, 32, 43, 0.74);
+    }
+
+    .hero-inner {
+      padding: 3.6rem 0 4.2rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.65rem;
+      color: #f3cc6c;
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 4.7rem);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .hero p:not(.eyebrow) {
+      max-width: 760px;
+      margin: 1rem 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+    }
+
+    .hero-actions,
+    .inline-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.6rem;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.05rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      color: #fff;
+      background: var(--blue);
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: var(--blue-dark);
+    }
+
+    .button-gold {
+      color: #162c34;
+      background: #f1c85f;
+    }
+
+    .button-gold:hover {
+      background: #ddb042;
+    }
+
+    .button-outline {
+      border-color: var(--teal-dark);
+      color: var(--teal-dark);
+      background: transparent;
+    }
+
+    .button-outline:hover {
+      color: #fff;
+      background: var(--teal-dark);
+    }
+
+    section {
+      scroll-margin-top: 86px;
+    }
+
+    .content-section {
+      padding: 4.5rem 0;
+    }
+
+    .content-section.alt {
+      background: var(--mist);
+    }
+
+    .section-heading {
+      max-width: 800px;
+      margin-bottom: 2rem;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 0.65rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .software-list,
+    .guide-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .software-row,
+    .guide-row {
+      display: grid;
+      grid-template-columns: minmax(210px, 0.85fr) minmax(280px, 1.6fr) auto;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.45rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .software-row h3,
+    .software-row p,
+    .guide-row h3,
+    .guide-row p {
+      margin: 0;
+    }
+
+    .software-row p,
+    .guide-row p {
+      color: var(--muted);
+    }
+
+    .file-size {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--teal-dark);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .notice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .notice {
+      padding: 1.05rem 1.15rem;
+      border-left: 5px solid var(--gold);
+      background: var(--gold-pale);
+    }
+
+    .notice p {
+      margin: 0.35rem 0 0;
+    }
+
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .music-item {
+      min-height: 100px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .music-item h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    .music-item p {
+      margin: 0.15rem 0 0;
+      color: var(--muted);
+    }
+
+    .music-item .button {
+      min-width: 116px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 2rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--teal);
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .step-number {
+      display: block;
+      color: #8b641a;
+      font-weight: 800;
+    }
+
+    .contact-band {
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .contact-band .section-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .contact-band h2,
+    .contact-band p {
+      margin: 0;
+    }
+
+    .contact-band p {
+      color: #d8e4e7;
+    }
+
+    .contact-link {
+      color: #f3cc6c;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .site-footer {
+      padding: 2rem 0;
+      border-top: 1px solid #39515a;
+      color: #d8e4e7;
+      background: var(--ink);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .site-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        position: static;
+      }
+
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 1rem 0;
+      }
+
+      .software-row,
+      .guide-row {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+
+      .software-row .button,
+      .guide-row .button {
+        justify-self: start;
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 660px) {
+      .header-inner,
+      .section-inner,
+      .hero-inner,
+      .footer-inner {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .brand {
+        font-size: 0.95rem;
+      }
+
+      .site-nav {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 0.75rem 1rem;
+      }
+
+      .hero {
+        min-height: 410px;
+        background-position: 31% center;
+      }
+
+      .hero-inner {
+        padding: 3.2rem 0 3.8rem;
+      }
+
+      .content-section {
+        padding: 3.5rem 0;
+      }
+
+      .notice-grid,
+      .music-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .music-item {
+        grid-template-columns: 1fr;
+      }
+
+      .music-item .button {
+        justify-self: start;
+      }
+
+      .contact-band .section-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="Westminster_Chimes_and_Carillon_Bells_8_1_Website.html" aria-label="Westminster Chimes and Carillon Bells home">
+        <img src="Carillon_Icon.ico" alt="">
+        <span>Westminster Chimes &amp; Carillon Bells</span>
+      </a>
+      <nav class="site-nav" aria-label="Download navigation">
+        <a href="#software">Software</a>
+        <a href="#guides">Guides</a>
+        <a href="#music-a-z">Music A-Z</a>
+        <a href="#hymnals">Hymnals</a>
+        <a href="#instructions">Instructions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="download-title">
+      <div class="hero-inner">
+        <p class="eyebrow">Official software, guides, and optional music</p>
+        <h1 id="download-title">Downloads for Version 8.1</h1>
+        <p>Get the latest portable Carillon software from GitHub, upgrade an existing v7.2.4 database, or choose from more than 5,000 optional bell and hymn arrangements.</p>
+        <div class="hero-actions">
+          <a class="button button-gold" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/CarillonBells_8_1_Portable_Full.zip">Download the Full Package</a>
+          <a class="button" href="https://github.com/tmartindub/Carillon8_1/releases/tag/v8.1.0">View All v8.1 Files</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="software">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Start here</p>
+          <h2>Carillon 8.1 software</h2>
+          <p>Version 8.1 is the current release. Software, the database converter, and current documentation are now distributed through the official GitHub release page.</p>
+        </div>
+
+        <div class="software-list">
+          <article class="software-row">
+            <div>
+              <h3>Complete portable package</h3>
+              <span class="file-size">Approximately 265 MB</span>
+            </div>
+            <p>For a new installation or complete flash-drive replacement. Includes Carillon 8.1, required support files, sample database, help, converter, documentation, and the standard Music folder.</p>
+            <a class="button" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/CarillonBells_8_1_Portable_Full.zip">Download ZIP</a>
+          </article>
+          <article class="software-row">
+            <div>
+              <h3>v7.2.4 database converter</h3>
+              <span class="file-size">Approximately 8 MB</span>
+            </div>
+            <p>For users moving an existing v7.2.4 installation to v8.1. The converter creates a dated backup before updating the selected database.</p>
+            <a class="button" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/CarillonBells_7_2_4_to_8_1_Converter.zip">Download Converter</a>
+          </article>
+        </div>
+
+        <div class="notice-grid">
+          <div class="notice">
+            <strong>GitHub source files are not installers.</strong>
+            <p>Do not use the automatically listed "Source code" ZIP or TAR.GZ files. Use the named Carillon packages above.</p>
+          </div>
+          <div class="notice">
+            <strong>Music is downloaded separately.</strong>
+            <p>The complete package includes the standard Music folder. Larger optional bell and hymn collections are available farther down this page.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section alt" id="guides">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Read before setup</p>
+          <h2>Version 8.1 documentation</h2>
+          <p>The User Guide covers daily operation. The Conversion Guide explains the v7.2.4 upgrade. The Engineering Guide is available for technical reference.</p>
+        </div>
+
+        <div class="guide-list">
+          <article class="guide-row">
+            <h3>User Guide</h3>
+            <p>Installation, scheduling, groups, silence windows, random music, themes, email, logs, and routine operation.</p>
+            <a class="button button-outline" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/Westminster_Chimes_and_Carillon_Bells_8_1_User_Guide.pdf">Open PDF</a>
+          </article>
+          <article class="guide-row">
+            <h3>Conversion to v8.1</h3>
+            <p>Step-by-step instructions for backing up and converting an existing v7.2.4 portable database.</p>
+            <a class="button button-outline" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/ConversionTo8_1.pdf">Open PDF</a>
+          </article>
+          <article class="guide-row">
+            <h3>Engineering Guide</h3>
+            <p>Technical information for maintainers, advanced users, and future development work.</p>
+            <a class="button button-outline" href="https://github.com/tmartindub/Carillon8_1/releases/download/v8.1.0/Westminster_Chimes_and_Carillon_Bells_8_1_Engineering_Guide.pdf">Open PDF</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="music-a-z">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Optional music library</p>
+          <h2>Bell and hymn music A-Z</h2>
+          <p>Choose only the music groups you need. These ZIP files are large, so check the available storage space on the computer and USB flash drive before downloading.</p>
+        </div>
+
+        <div class="music-grid">
+          <article class="music-item">
+            <div><h3>Bell Music #-B</h3><p>511 MB</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fi/004bxrvmoxiw8nlcpb7ec/Bell-Music-B.zip?rlkey=m2mhqj6io8gd5v9k6epw9ac11&amp;dl=1">Download</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Bell Music C-F</h3><p>569 MB</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fi/9t65tywwkjsr841hsrytk/Bell-Music-C-F.zip?rlkey=fll8ks00o0xza5lncq0wgkooj&amp;dl=1">Download</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Bell Music G-H</h3><p>292 MB</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fi/7zv0w4wmw18x6w14nenqs/Bell-Music-G-H.zip?rlkey=llrbaevwx4rjyixobwo0u4i13&amp;dl=1">Download</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Bell Music I-J</h3><p>735 MB</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fi/d6wh85wxsl816ugr21tpx/Bell-Music-I-J.zip?rlkey=p8bkbuf2sx1j66rxjrcuy06qa&amp;dl=1">Download</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Bell Music K-M</h3><p>550 MB</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fi/wkubn6mmyprr8bnljsb7p/Bell-Music-K-M.zip?rlkey=5kcevbal6komae252d6yalbv3&amp;dl=1">Download</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Bell Music N-O</h3><p>635 MB</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fi/cspc9c5d06162omf5irvg/Bell-Music-N-O.zip?rlkey=eg4fus9w0mnrnlb3zqec17o5u&amp;dl=1">Download</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Bell Music P-T</h3><p>1 GB</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fi/73wsod9nxluhrugoi17et/Bell-Music-P-T.zip?rlkey=76x095baf025y18yqa1o1fdpn&amp;dl=1">Download</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Bell Music U-Z</h3><p>240 MB</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fi/68tultdxbn2rvofumagzb/Bell-Music-U-Z.zip?rlkey=60uwe1mxfm22iafv8q4swkr4q&amp;dl=1">Download</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section alt" id="hymnals">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Optional denomination collections</p>
+          <h2>Denomination-specific hymns</h2>
+          <p>These links open folders containing ZIP files. Some familiar hymns appear in more than one collection, so duplicates are possible. Folder downloads range from approximately 197 MB to 2.5 GB.</p>
+        </div>
+
+        <div class="music-grid">
+          <article class="music-item">
+            <div><h3>Catholic Hymns</h3><p>2.3 GB folder</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fo/f7ikozdyy0jsp3t0qvq0m/AGEC7nsgMZrTskiD4I26AXo?rlkey=ao821dhp636oaa4igett7illo&amp;dl=1">Open Folder</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Presbyterian Trinity Hymnal 1</h3><p>2.2 GB folder</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fo/ujxs9vdqefwqowxq3h1u4/ABqa54JK4g2_I4g-Huz0qNU?rlkey=ku2hxpaerpse62y8kq3s6ryj5&amp;dl=1">Open Folder</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Presbyterian Trinity Hymnal 2</h3><p>2.5 GB folder</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fo/pvjrr673ok8xvxa1ym23o/APTU-YH9GPLVxNLKJIJKlMI?rlkey=98z9nlqa1oxdtyw6o74l2x9iw&amp;dl=1">Open Folder</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Other Hymns and Gospel Music</h3><p>197 MB folder</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fo/e67x87y5wt3iyow2i232h/AHtJSukHNP2kzzUK9Q1WKWQ?rlkey=xu84ybxau4u1s2awwkxwwdhkt&amp;dl=1">Open Folder</a>
+          </article>
+          <article class="music-item">
+            <div><h3>Seventh-day Adventist Hymnal</h3><p>1.5 GB folder</p></div>
+            <a class="button button-outline" href="https://www.dropbox.com/scl/fo/lehd4bdgwznpx6205fig3/ALPQacbnYwpRKj9rymdQ-U8?rlkey=acfxt0tjc0jdy51sbppx7i63i&amp;dl=1">Open Folder</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="instructions">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Simple portable setup</p>
+          <h2>After downloading</h2>
+          <p>ZIP files must be extracted before use. Do not run Carillon or music directly from inside a compressed ZIP file.</p>
+        </div>
+
+        <ol class="steps">
+          <li><span class="step-number">Step 1</span>Download the selected software, guide, or music collection to the computer.</li>
+          <li><span class="step-number">Step 2</span>Right-click the ZIP file and choose <strong>Extract All</strong>.</li>
+          <li><span class="step-number">Step 3</span>Copy the extracted Carillon files to the root of the USB flash drive. Add optional music to suitable folders on that drive.</li>
+          <li><span class="step-number">Step 4</span>Open the flash drive and start Carillon there using <code>start_carillon.vbs</code> or <code>Carillon.exe</code>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="content-section contact-band" id="contact">
+      <div class="section-inner">
+        <div>
+          <p class="eyebrow">Need help choosing a download?</p>
+          <h2>General inquiries</h2>
+          <p>Questions and comments are addressed as time permits. Limited support is available.</p>
+        </div>
+        <a class="contact-link" href="mailto:churchesite@gmail.com">churchesite@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Westminster Chimes &amp; Carillon Bells v8.1 Portable Edition</p>
+      <p>&copy; 2026 Westminster Chimes and Carillon Bells. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
