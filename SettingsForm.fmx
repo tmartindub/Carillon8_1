@@ -484,8 +484,11 @@ object SettingsMain: TSettingsMain
   object setFDQuery1: TFDQuery
     FieldOptions.BlobDisplayValue = dvFullText
     Connection = setFDConnection1
+    UpdateOptions.UpdateTableName = 'PL_SETTINGS'
+    UpdateOptions.UpdateMode = upWhereKeyOnly
+    UpdateOptions.KeyFields = 'settings_id'
     SQL.Strings = (
-      'SELECT * FROM PL_SETTINGS;')
+      'SELECT * FROM PL_SETTINGS WHERE settings_id = 1')
     Left = 240
     Top = 8
   end

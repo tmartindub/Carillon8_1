@@ -1,7 +1,7 @@
 unit SettingsForm;
 // Westminster Chimes and Carillon Bells
 // Version: 8.1
-// © 2026 All rights reserved
+// ï¿½ 2026 All rights reserved
 interface
 uses
   Data.Bind.Components,
@@ -628,11 +628,13 @@ begin
   Timer1.Interval := 60000;
   ConfigurePortableSQLiteConnection(setFDConnection1);
   setFDConnection1.connected := True;
+  EnsurePLSettingsStableKey(setFDConnection1);
   TempQuery := TFDQuery.Create(nil);
   try
     TempQuery.Connection := setFDConnection1;
     TempQuery.SQL.Text :=
-      'SELECT form_bgcolor, form_fontcolor, logging_status FROM pl_settings';
+      'SELECT form_bgcolor, form_fontcolor, logging_status FROM pl_settings ' +
+      'WHERE settings_id = 1';
     TempQuery.Open;
     if not TempQuery.IsEmpty then
     begin
@@ -663,7 +665,10 @@ begin
   chkLogOnOff.IsChecked := (chkLog = 1);
   chkLogOnOff.OnChange := SettingsControlChanged;
   setFDQuery1.Connection := setFDConnection1;
-  setFDQuery1.SQL.Text := 'SELECT * FROM pl_settings';
+  setFDQuery1.UpdateOptions.UpdateTableName := 'PL_SETTINGS';
+  setFDQuery1.UpdateOptions.UpdateMode := upWhereKeyOnly;
+  setFDQuery1.UpdateOptions.KeyFields := 'settings_id';
+  setFDQuery1.SQL.Text := 'SELECT * FROM pl_settings WHERE settings_id = 1';
   setFDQuery1.Open;
   LoadSilenceSettings;
   dtAshWed.OnClosePicker := dtAshWedChange;
@@ -708,6 +713,18 @@ begin
 end;
 procedure TSettingsMain.FormShow(Sender: TObject);
 begin
+  if setFDQuery1.Active then
+  begin
+    if setFDQuery1.State in dsEditModes then
+      setFDQuery1.Cancel;
+    setFDQuery1.Close;
+    setFDQuery1.Open;
+    GeneratedSyncManualFieldBindingsForDataSet(setFDQuery1);
+    if not setFDQuery1.IsEmpty then
+      chkLogOnOff.IsChecked :=
+        setFDQuery1.FieldByName('logging_status').AsInteger = 1;
+    LoadSilenceSettings;
+  end;
   ApplyCurrentCarillonThemeToForm(Self);
 end;
 procedure TSettingsMain.Exit1Click(Sender: TObject);
@@ -763,6 +780,8 @@ begin
   DBNavigator1_GeneratedBeforeAction(Sender, nbPost);
   if setFDQuery1.Active and (setFDQuery1.State in dsEditModes) then
     setFDQuery1.Post;
+  if setFDQuery1.Active then
+    setFDQuery1.Refresh;
 end;
 procedure TSettingsMain.btnCancelSettingsClick(Sender: TObject);
 begin

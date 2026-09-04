@@ -395,8 +395,11 @@ object frmEmailSettings: TfrmEmailSettings
   end
   object EmailQuery: TFDQuery
     Connection = FDConnection1
+    UpdateOptions.UpdateTableName = 'PL_SETTINGS'
+    UpdateOptions.UpdateMode = upWhereKeyOnly
+    UpdateOptions.KeyFields = 'settings_id'
     SQL.Strings = (
-      'SELECT * FROM pl_settings')
+      'SELECT * FROM pl_settings WHERE settings_id = 1')
     Left = 336
     Top = 16
   end

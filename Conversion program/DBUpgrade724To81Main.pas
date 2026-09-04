@@ -283,11 +283,14 @@ begin
   begin
     AConnection.ExecSQL(
       'CREATE TABLE PL_SETTINGS (' +
+      'settings_id INTEGER NOT NULL DEFAULT 1, ' +
       'ORGANIZATION_NAME TEXT CHECK (LENGTH(ORGANIZATION_NAME) <= 100), ' +
       'RAND_SONGS_DIRECTORY TEXT CHECK (LENGTH(RAND_SONGS_DIRECTORY) <= 150))');
     AddReportLine('Created PL_SETTINGS table.');
   end;
 
+  AddColumnIfMissing('settings_id',
+    'settings_id INTEGER NOT NULL DEFAULT 1');
   AddColumnIfMissing('LOGGING_STATUS',
     'LOGGING_STATUS INTEGER DEFAULT 0 CHECK (LOGGING_STATUS IN (0, 1))');
   AddColumnIfMissing('form_bgcolor', 'form_bgcolor TEXT');
@@ -318,11 +321,18 @@ begin
 
   AConnection.ExecSQL(
     'INSERT INTO PL_SETTINGS ' +
-    '(ORGANIZATION_NAME, RAND_SONGS_DIRECTORY, LOGGING_STATUS, ' +
+    '(settings_id, ORGANIZATION_NAME, RAND_SONGS_DIRECTORY, LOGGING_STATUS, ' +
     'smtp_host, smtp_port, from_address) ' +
-    'SELECT ''Your Organization Name Here'', ''.\Random_songs'', 0, ' +
+    'SELECT 1, ''Your Organization Name Here'', ''.\Random_songs'', 0, ' +
     '''smtp.gmail.com'', 587, ''Westminster Chimes'' ' +
     'WHERE NOT EXISTS (SELECT 1 FROM PL_SETTINGS)');
+
+  AConnection.ExecSQL(
+    'UPDATE PL_SETTINGS SET settings_id = 1 ' +
+    'WHERE settings_id IS NULL OR settings_id <> 1');
+  AConnection.ExecSQL(
+    'CREATE UNIQUE INDEX IF NOT EXISTS idx_pl_settings_settings_id ' +
+    'ON PL_SETTINGS(settings_id)');
 end;
 
 procedure TfrmDBUpgrade724To81.EnsureRandomDirectorySchema(

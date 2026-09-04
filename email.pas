@@ -1,7 +1,7 @@
 unit email;
 // Westminster Chimes and Carillon Bells
 // Version: 8.1
-// © 2026 All rights reserved
+// ï¿½ 2026 All rights reserved
 interface
 uses
   Data.Bind.DBScope,
@@ -354,8 +354,12 @@ begin
   FGeneratedFormCreateRan := True;
   ConfigurePortableSQLiteConnection(FDConnection1);
   FDConnection1.connected := True;
+  EnsurePLSettingsStableKey(FDConnection1);
   EmailQuery.Connection := FDConnection1;
-  EmailQuery.SQL.Text := 'SELECT * FROM pl_settings';
+  EmailQuery.UpdateOptions.UpdateTableName := 'PL_SETTINGS';
+  EmailQuery.UpdateOptions.UpdateMode := upWhereKeyOnly;
+  EmailQuery.UpdateOptions.KeyFields := 'settings_id';
+  EmailQuery.SQL.Text := 'SELECT * FROM pl_settings WHERE settings_id = 1';
   EmailQuery.Open;
   EmailDataSource.DataSet := EmailQuery;
   if BindSourceDB_EmailDataSource = nil then
@@ -501,7 +505,8 @@ var
   q: TFDQuery;
 begin
   FLoadingEmailControls := True;
-  q := ExecuteSettingsQuery('SELECT * FROM pl_settings');
+  q := ExecuteSettingsQuery(
+    'SELECT * FROM pl_settings WHERE settings_id = 1');
   try
     with FEmailConfig do
     begin
@@ -530,7 +535,8 @@ var
   q: TFDQuery;
 begin
   q := ExecuteSettingsQuery
-    ('SELECT form_bgcolor, form_fontcolor FROM pl_settings');
+    ('SELECT form_bgcolor, form_fontcolor FROM pl_settings ' +
+     'WHERE settings_id = 1');
   try
     if not q.IsEmpty then
     begin
@@ -572,6 +578,13 @@ procedure TfrmEmailSettings.FormShow(Sender: TObject);
 begin
   if not FGeneratedFormCreateRan then
     FormCreate(Self);
+  if EmailQuery.Active then
+  begin
+    if EmailQuery.State in dsEditModes then
+      EmailQuery.Cancel;
+    EmailQuery.Close;
+    EmailQuery.Open;
+  end;
   LoadEmailSettings;
   LoadFormSettings;
   ApplyFormSettings;

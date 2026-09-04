@@ -70,6 +70,7 @@ procedure BuildCarillonThemePalette(const AThemeIndex: Integer;
   out APalette: TCarillonThemePalette);
 function CarillonDatabasePath: string;
 procedure ConfigurePortableSQLiteConnection(const AConnection: TFDConnection);
+procedure EnsurePLSettingsStableKey(const AConnection: TFDConnection);
 function FindCarillonThemeIndex(const ABackgroundColor,
   AFontColor: TAlphaColor): Integer;
 function FindCarillonThemeIndexByMenuName(const AMenuItemName: string): Integer;
@@ -336,6 +337,72 @@ begin
   AConnection.Params.Values['Database'] := CarillonDatabasePath;
 end;
 
+function SQLiteTableExists(const AConnection: TFDConnection;
+  const ATableName: string): Boolean;
+var
+  Query: TFDQuery;
+begin
+  Result := False;
+  if (AConnection = nil) or (not AConnection.Connected) then
+    Exit;
+
+  Query := TFDQuery.Create(nil);
+  try
+    Query.Connection := AConnection;
+    Query.SQL.Text :=
+      'SELECT name FROM sqlite_master WHERE type = ''table'' AND name = :name';
+    Query.ParamByName('name').AsString := ATableName;
+    Query.Open;
+    Result := not Query.IsEmpty;
+  finally
+    Query.Free;
+  end;
+end;
+
+function SQLiteTableHasColumn(const AConnection: TFDConnection;
+  const ATableName, AColumnName: string): Boolean;
+var
+  Query: TFDQuery;
+begin
+  Result := False;
+  if (AConnection = nil) or (not AConnection.Connected) then
+    Exit;
+
+  Query := TFDQuery.Create(nil);
+  try
+    Query.Connection := AConnection;
+    Query.SQL.Text := 'PRAGMA table_info(' + ATableName + ')';
+    Query.Open;
+    while not Query.Eof do
+    begin
+      if SameText(Query.FieldByName('name').AsString, AColumnName) then
+        Exit(True);
+      Query.Next;
+    end;
+  finally
+    Query.Free;
+  end;
+end;
+
+procedure EnsurePLSettingsStableKey(const AConnection: TFDConnection);
+begin
+  if (AConnection = nil) or (not AConnection.Connected) then
+    Exit;
+  if not SQLiteTableExists(AConnection, 'PL_SETTINGS') then
+    Exit;
+
+  if not SQLiteTableHasColumn(AConnection, 'PL_SETTINGS', 'settings_id') then
+    AConnection.ExecSQL(
+      'ALTER TABLE PL_SETTINGS ADD COLUMN settings_id INTEGER NOT NULL DEFAULT 1');
+
+  AConnection.ExecSQL(
+    'UPDATE PL_SETTINGS SET settings_id = 1 ' +
+    'WHERE settings_id IS NULL OR settings_id <> 1');
+  AConnection.ExecSQL(
+    'CREATE UNIQUE INDEX IF NOT EXISTS idx_pl_settings_settings_id ' +
+    'ON PL_SETTINGS(settings_id)');
+end;
+
 function FindCarillonThemeIndex(const ABackgroundColor,
   AFontColor: TAlphaColor): Integer;
 var
@@ -376,8 +443,10 @@ begin
   try
     ConfigurePortableSQLiteConnection(Conn);
     Conn.Connected := True;
+    EnsurePLSettingsStableKey(Conn);
     Query.Connection := Conn;
-    Query.SQL.Text := 'SELECT form_bgcolor, form_fontcolor FROM pl_settings';
+    Query.SQL.Text :=
+      'SELECT form_bgcolor, form_fontcolor FROM pl_settings WHERE settings_id = 1';
     Query.Open;
     if not Query.IsEmpty then
     begin
@@ -412,9 +481,11 @@ begin
   try
     ConfigurePortableSQLiteConnection(Conn);
     Conn.Connected := True;
+    EnsurePLSettingsStableKey(Conn);
     Query.Connection := Conn;
     Query.SQL.Text :=
-      'UPDATE pl_settings SET form_bgcolor = :stbgColor, form_fontcolor = :stfontColor';
+      'UPDATE pl_settings SET form_bgcolor = :stbgColor, form_fontcolor = :stfontColor ' +
+      'WHERE settings_id = 1';
     Query.ParamByName('stbgColor').AsInteger := AlphaColorToVCLColor(ABackgroundColor);
     Query.ParamByName('stfontColor').AsInteger := AlphaColorToVCLColor(AFontColor);
     Query.ExecSQL;
