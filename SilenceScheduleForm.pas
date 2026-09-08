@@ -19,7 +19,8 @@ uses
   FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Phys.SQLiteDef,
   FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.FMXUI.Wait,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FMX.Controls.Presentation, Fmx.Bind.Navigator;
+  FireDAC.Comp.DataSet, FMX.Controls.Presentation, Fmx.Bind.Navigator,
+  Data.Bind.Controls, FMX.Layouts;
 
 type
   TfrmSilenceSchedule = class(TForm)

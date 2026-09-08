@@ -33,16 +33,15 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Position.X = 156.000000000000000000
     Position.Y = 51.000000000000000000
     Size.Width = 576.000000000000000000
-    Size.Height = 53.000000000000000000
+    Size.Height = 62.000000000000000000
     Size.PlatformDefault = False
     TextSettings.Font.Size = 14.000000000000000000
     TextSettings.FontColor = claMaroon
-    TextSettings.HorzAlign = Center
     Text = 
       'Enter information in these fields to silence the bell system on ' +
-      'selected days. '#13#10'Times may be entered as 10:00 AM or 14:05. A co' +
-      'lon is required in the times. Overnight windows may use a start ti' +
-      'me later than the end time.'
+      'selected days.  Times may be entered as 10:00 AM or 14:05. A col' +
+      'on is required in the times. Overnight windows may use a start t' +
+      'ime later than the end time.'
     TabOrder = 1
   end
   object lblEntry: TLabel
@@ -255,9 +254,9 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Height = 34.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 18
-    Visible = False
     Text = 'First'
     TextSettings.Font.Size = 15.000000000000000000
+    Visible = False
     OnClick = btnFirstClick
   end
   object btnPrior: TButton
@@ -268,9 +267,9 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Height = 34.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 19
-    Visible = False
     Text = 'Prior'
     TextSettings.Font.Size = 15.000000000000000000
+    Visible = False
     OnClick = btnPriorClick
   end
   object btnNext: TButton
@@ -281,9 +280,9 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Height = 34.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 20
-    Visible = False
     Text = 'Next'
     TextSettings.Font.Size = 15.000000000000000000
+    Visible = False
     OnClick = btnNextClick
   end
   object btnLast: TButton
@@ -294,9 +293,9 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Height = 34.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 21
-    Visible = False
     Text = 'Last'
     TextSettings.Font.Size = 15.000000000000000000
+    Visible = False
     OnClick = btnLastClick
   end
   object btnSave: TButton
@@ -307,9 +306,9 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Height = 34.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 22
-    Visible = False
     Text = 'Save'
     TextSettings.Font.Size = 15.000000000000000000
+    Visible = False
     OnClick = btnSaveClick
   end
   object btnClose: TButton
@@ -327,10 +326,10 @@ object frmSilenceSchedule: TfrmSilenceSchedule
   object DBNavigator1: TBindNavigator
     Position.X = 278.000000000000000000
     Position.Y = 424.000000000000000000
-    Size.Width = 280.000000000000000000
+    Size.Width = 276.000000000000000000
     Size.Height = 34.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 24
+    TabOrder = 25
     VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbPost, nbCancel]
     xRadius = 4.000000000000000000
     yRadius = 4.000000000000000000
@@ -342,10 +341,11 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Width = 46.000000000000000000
     Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
-    Text = 'First'
     TextSettings.Font.Size = 13.000000000000000000
     TextSettings.FontColor = claMaroon
     TextSettings.HorzAlign = Center
+    Text = 'First'
+    TabOrder = 26
   end
   object lblNavigatorPrior: TLabel
     StyledSettings = []
@@ -354,10 +354,11 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Width = 47.000000000000000000
     Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
-    Text = 'Prior'
     TextSettings.Font.Size = 13.000000000000000000
     TextSettings.FontColor = claMaroon
     TextSettings.HorzAlign = Center
+    Text = 'Prior'
+    TabOrder = 27
   end
   object lblNavigatorNext: TLabel
     StyledSettings = []
@@ -366,10 +367,11 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Width = 47.000000000000000000
     Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
-    Text = 'Next'
     TextSettings.Font.Size = 13.000000000000000000
     TextSettings.FontColor = claMaroon
     TextSettings.HorzAlign = Center
+    Text = 'Next'
+    TabOrder = 28
   end
   object lblNavigatorLast: TLabel
     StyledSettings = []
@@ -378,10 +380,11 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Width = 47.000000000000000000
     Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
-    Text = 'Last'
     TextSettings.Font.Size = 13.000000000000000000
     TextSettings.FontColor = claMaroon
     TextSettings.HorzAlign = Center
+    Text = 'Last'
+    TabOrder = 29
   end
   object lblNavigatorSave: TLabel
     StyledSettings = []
@@ -390,10 +393,11 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Width = 47.000000000000000000
     Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
-    Text = 'Save'
     TextSettings.Font.Size = 13.000000000000000000
     TextSettings.FontColor = claMaroon
     TextSettings.HorzAlign = Center
+    Text = 'Save'
+    TabOrder = 30
   end
   object lblNavigatorCancel: TLabel
     StyledSettings = []
@@ -402,10 +406,11 @@ object frmSilenceSchedule: TfrmSilenceSchedule
     Size.Width = 46.000000000000000000
     Size.Height = 18.000000000000000000
     Size.PlatformDefault = False
-    Text = 'Cancel'
     TextSettings.Font.Size = 13.000000000000000000
     TextSettings.FontColor = claMaroon
     TextSettings.HorzAlign = Center
+    Text = 'Cancel'
+    TabOrder = 31
   end
   object lblStatus: TLabel
     StyledSettings = []
