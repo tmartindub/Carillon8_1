@@ -660,6 +660,7 @@ var
   i: Integer;
   RecentPlays: TStringList;
   YesterdayCount: Integer;
+  YesterdayCountFound: Boolean;
   YesterdayDate: TDate;
   DT: TDateTime;
   L: string;
@@ -718,6 +719,7 @@ begin
     LogFilePath := CarillonLogFilePath;
     LastStartup := 'Unknown';
     YesterdayCount := 0;
+    YesterdayCountFound := False;
     YesterdayDate := Date - 1;
     if FileExists(LogFilePath) then
       LogLines.LoadFromFile(LogFilePath);
@@ -745,8 +747,18 @@ begin
       L := LogLines[i];
       if (Pos('Played Song:', L) > 0) and (RecentPlays.Count < 20) then
         RecentPlays.Add(L);
-      if Pos('Total Songs played yesterday:', L) > 0 then
-        YesterdayCount := StrToIntDef(Trim(Copy(L, LastDelimiter(':', L)+1, 20)), YesterdayCount);
+      // Today's maintenance entry records yesterday's total; keep the newest valid one.
+      if not YesterdayCountFound and
+         (Pos('Total Songs played yesterday:', L) > 0) and
+         TryParseCarillonLogLineDateTime(L, DT) and
+         (DateOf(DT) = YesterdayDate + 1) then
+      begin
+        if TryStrToInt(Trim(Copy(L, LastDelimiter(':', L) + 1, MaxInt)),
+             YesterdayCount) then
+          YesterdayCountFound := YesterdayCount >= 0;
+        if not YesterdayCountFound then
+          YesterdayCount := 0;
+      end;
       // Errors / warnings from previous date only
       if (Pos('Error', L) > 0) or (Pos('Warning', L) > 0) then
       begin
