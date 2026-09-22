@@ -249,6 +249,7 @@ type
     FOriginal_PlaylistQuery_AfterOpen: TDataSetNotifyEvent;
     FOriginal_PlaylistQuery_OnCalcFields: TDataSetNotifyEvent;
     FPlayedSongCountToday: Integer;
+    FPlayedSongCountDate: TDateTime;
     FPlaylistGridRows: TList<TPlaylistGridRow>;
     FPlaylistGridStartupClosedPending: Boolean;
     FPlaylistGridSelectionSyncDepth: Integer;
@@ -409,6 +410,7 @@ type
     MyRecNo: Integer;
     StartTime: TDateTime;
     procedure RefreshSilenceRulesAndSchedule;
+    property ReportSilenceManager: TSilenceManager read FSilenceManager;
   end;
 procedure RetrieveRandSongsDirectory(var RandSongsDir: string);
 var
@@ -2339,7 +2341,13 @@ begin
   StopNowPlayingCountdown;
   CenterNowPlayingLabelInHero;
   lblRandSongPlaying.Visible := True;
+  if FPlayedSongCountDate <> Date then
+  begin
+    FPlayedSongCountToday := 0;
+    FPlayedSongCountDate := Date;
+  end;
   Inc(FPlayedSongCountToday);
+  AddToLog('Daily play count checkpoint: ' + IntToStr(FPlayedSongCountToday));
   UpdateStatusBar(ASongPath);
   Application.ProcessMessages;
 end;
@@ -3471,7 +3479,8 @@ begin
     FPlaylistGridStartCollapsed := TDictionary<string, Boolean>.Create;
   EnsurePlaylistGridColumns;
   ResetPlaylistGridToStartupState;
-  FPlayedSongCountToday := 0;
+  FPlayedSongCountDate := Date;
+  FPlayedSongCountToday := ReadCarillonPlayCount(FPlayedSongCountDate);
   SetupStatusBar;
   UpdateStatusBar('');
   // for portable app
@@ -4428,10 +4437,11 @@ begin
      chkEnableSchedule.IsChecked then
   begin
     FLastScheduleRebuildDate := Date;
-    AddToLog('Total Songs played yesterday: ' + FPlayedSongCountToday.ToString);
-    FPlayedSongCountToday := 0;
+    AddToLog('Total Songs played yesterday: ' + IntToStr(ReadCarillonPlayCount(Date - 1)));
+    FPlayedSongCountDate := Date;
+    FPlayedSongCountToday := ReadCarillonPlayCount(FPlayedSongCountDate);
     UpdateStatusBar('');
-    AddToLog('Daily Song Count reset to zero');
+    AddToLog('Daily Song Count restored for today: ' + IntToStr(FPlayedSongCountToday));
     Randomize;
     AddToLog('Randomize seed reset');
     UpdatePlaylistFromSeasonalGroups;

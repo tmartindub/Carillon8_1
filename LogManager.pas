@@ -5,6 +5,7 @@ interface
 
 procedure AddCarillonLogMessage(const AMsg: string);
 function CarillonLogFilePath: string;
+function ReadCarillonPlayCount(const ADate: TDateTime): Integer;
 function TryParseCarillonLogLineDateTime(const ALine: string;
   out AValue: TDateTime): Boolean;
 procedure TrimCarillonPlayLog(const ADaysToKeep: Integer = 30);
@@ -74,6 +75,36 @@ begin
     Exit;
   TextDate := Copy(ALine, 1, SeparatorPos - 1);
   Result := TryParseLogTimestamp(TextDate, AValue);
+end;
+
+function ReadCarillonPlayCount(const ADate: TDateTime): Integer;
+var
+  Lines: TStringList;
+  Line, MessageText: string;
+  Stamp: TDateTime;
+  SavedCount: Integer;
+begin
+  Result := 0;
+  if not FileExists(CarillonLogFilePath) then
+    Exit;
+  Lines := TStringList.Create;
+  try
+    Lines.LoadFromFile(CarillonLogFilePath);
+    for Line in Lines do
+      if TryParseCarillonLogLineDateTime(Line, Stamp) and
+         (DateOf(Stamp) = DateOf(ADate)) then
+      begin
+        MessageText := Copy(Line, Pos(' - ', Line) + 3, MaxInt);
+        if MessageText.StartsWith('Played Song: ') then
+          Inc(Result)
+        else if MessageText.StartsWith('Daily play count checkpoint: ') and
+          TryStrToInt(Copy(MessageText, Length('Daily play count checkpoint: ') + 1,
+            MaxInt), SavedCount) and (SavedCount >= 0) then
+          Result := SavedCount;
+      end;
+  finally
+    Lines.Free;
+  end;
 end;
 
 procedure AddCarillonLogMessage(const AMsg: string);

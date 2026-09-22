@@ -146,6 +146,8 @@ implementation
 uses
   CarillonTheme,
   LogManager,
+  ScheduleManager,
+  System.Generics.Collections,
   playlist,
   System.IOUtils,
   System.StrUtils;
@@ -662,6 +664,9 @@ var
   YesterdayCount: Integer;
   YesterdayCountFound: Boolean;
   YesterdayDate: TDate;
+  ReportSchedule: TList<TScheduleEntry>;
+  ReportTime: TDateTime;
+  ReportNextEntryId, RemainingEvents: Integer;
   DT: TDateTime;
   L: string;
   PlaylistCount: Integer;
@@ -687,7 +692,11 @@ begin
   ErrorLines := TStringList.Create;
   MaintLines := TStringList.Create;
   ReportHTML := TStringBuilder.Create;
+  ReportSchedule := TList<TScheduleEntry>.Create;
   try
+    ReportTime := Now;
+    ReportNextEntryId := 0;
+    RemainingEvents := 0;
     // Org name
     OrgName := 'Organization name not set';
     q := ExecuteSettingsQuery('SELECT organization_name FROM pl_settings');
@@ -720,7 +729,7 @@ begin
     LastStartup := 'Unknown';
     YesterdayCount := 0;
     YesterdayCountFound := False;
-    YesterdayDate := Date - 1;
+    YesterdayDate := DateOf(ReportTime) - 1;
     if FileExists(LogFilePath) then
       LogLines.LoadFromFile(LogFilePath);
     // ------------------------------------------------------------
@@ -766,31 +775,18 @@ begin
           ErrorLines.Add(L);
       end;
     end;
+    if not YesterdayCountFound then
+      YesterdayCount := ReadCarillonPlayCount(YesterdayDate);
     // Application uptime (from Playlist form start time)
     if Assigned(fmDailyPlaylist) then
       AppUptime := FormatAppUptimeFromStartTime(fmDailyPlaylist.StartTime)
     else
       AppUptime := 'Unknown';
-    // Schedule stats from global Schedule (Playlist.pas)
-    // Schedule list is event-level (same as ShowRemainingPlaylist)
+    // Report schedule is independent of the queue paused by the settings screen.
     FirstEventTime := 0;
     LastEventTime := 0;
     NextEventTime := 0;
     NextEventSong := '';
-    if Assigned(PlaybackSchedule) and (PlaybackSchedule.Count > 0) then
-    begin
-      FirstEventTime := PlaybackSchedule[0].ScheduledTime;
-      LastEventTime := PlaybackSchedule[PlaybackSchedule.Count-1].ScheduledTime;
-      for i := 0 to PlaybackSchedule.Count-1 do
-      begin
-        if CompareTime(Now, PlaybackSchedule[i].ScheduledTime) <= 0 then
-        begin
-          NextEventTime := PlaybackSchedule[i].ScheduledTime;
-          NextEventSong := PlaybackSchedule[i].SongPath;
-          Break;
-        end;
-      end;
-    end;
     // Playlist summary from fmDailyPlaylist.PlaylistQuery (already in Playlist form)
     PlaylistCount := 0;
     TotalDurSecs := 0;
@@ -803,6 +799,12 @@ begin
         QPlaylist.Connection := fmDailyPlaylist.PlaylistQuery.Connection;
         QPlaylist.SQL.Text := fmDailyPlaylist.PlaylistQuery.SQL.Text;
         QPlaylist.Open;
+        BuildPlaybackSchedule(QPlaylist, ReportSchedule, ReportNextEntryId,
+          function(const AScheduledDateTime: TDateTime): Boolean
+          begin
+            Result := Assigned(fmDailyPlaylist.ReportSilenceManager) and
+              fmDailyPlaylist.ReportSilenceManager.IsScheduleTimeSilenced(AScheduledDateTime);
+          end, True);
         QPlaylist.First;
         while not QPlaylist.Eof do
         begin
@@ -821,6 +823,21 @@ begin
       finally
         QPlaylist.Free;
       end;
+    end;
+    if ReportSchedule.Count > 0 then
+    begin
+      FirstEventTime := ReportSchedule[0].ScheduledTime;
+      LastEventTime := ReportSchedule[ReportSchedule.Count - 1].ScheduledTime;
+      for i := 0 to ReportSchedule.Count - 1 do
+        if CompareTime(ReportTime, ReportSchedule[i].ScheduledTime) <= 0 then
+        begin
+          if RemainingEvents = 0 then
+          begin
+            NextEventTime := ReportSchedule[i].ScheduledTime;
+            NextEventSong := ReportSchedule[i].SongPath;
+          end;
+          Inc(RemainingEvents);
+        end;
     end;
     // Collect last 10 maintenance entries (newest first), then display oldest->newest
     MaintLines.Clear;
@@ -844,7 +861,7 @@ begin
         // Today's early-morning maintenance window (00:0000:10)
         if (DateOf(DT) = Date) and (TimeOf(DT) <= EncodeTime(0,10,0,0)) and
            ((Pos('Total Songs played yesterday', LogLines[i]) > 0) or
-            (Pos('Daily Song Count reset', LogLines[i]) > 0) or
+            (Pos('Daily Song Count ', LogLines[i]) > 0) or
             (Pos('Randomize seed reset', LogLines[i]) > 0) or
             (Pos('Schedule for', LogLines[i]) > 0)) then
         begin
@@ -889,8 +906,10 @@ begin
     // Schedule Status
     ReportHTML.Append('<br><div class="section">Schedule Status</div>');
     ReportHTML.Append('<table>');
-    ReportHTML.Append('<tr><td>Scheduled Events Today:</td><td>' + IntToStr(IfThen(Assigned(PlaybackSchedule), PlaybackSchedule.Count, 0)) + '</td></tr>');
-    if Assigned(PlaybackSchedule) and (PlaybackSchedule.Count > 0) then
+    ReportHTML.Append('<tr><td>Total Scheduled Events Today:</td><td>' + IntToStr(ReportSchedule.Count) + '</td></tr>');
+    ReportHTML.Append('<tr><td>Events Remaining Today:</td><td>' + IntToStr(RemainingEvents) + '</td></tr>');
+    ReportHTML.Append('<tr><td>Playback Schedule:</td><td>' + IfThen(fmDailyPlaylist.chkEnableSchedule.IsChecked, 'Enabled', 'Disabled / paused') + '</td></tr>');
+    if ReportSchedule.Count > 0 then
     begin
       ReportHTML.Append('<tr><td>First Event:</td><td>' + HTMLSafe(FormatDateTime('hh:nn AM/PM', FirstEventTime)) + '</td></tr>');
       ReportHTML.Append('<tr><td>Last Event:</td><td>' + HTMLSafe(FormatDateTime('hh:nn AM/PM', LastEventTime)) + '</td></tr>');
@@ -943,19 +962,19 @@ ReportHTML.Append('</div>');
     ReportHTML.Append('<div class="section">Overall Health Score</div>');
     // Simple conservative score: 100 - (missing files) - (errors*5)
     ReportHTML.Append(IntToStr(Max(0, 100 - Missing.Count - (ErrorLines.Count*5))) + ' / 100<br>');
-    // Remaining schedule for today (authoritative: global Schedule list, same as ShowRemainingPlaylist)
+    // Remaining planned events, independent of whether playback is currently paused.
     ReportHTML.Append('<div class="section">Remaining Schedule for Today</div>');
     ReportHTML.Append('<div class="mono">');
-    if Assigned(PlaybackSchedule) and (PlaybackSchedule.Count > 0) then
+    if RemainingEvents > 0 then
     begin
     var DisplayCount: integer;
     DisplayCount := 0;
-    for i := 0 to PlaybackSchedule.Count - 1 do
+    for i := 0 to ReportSchedule.Count - 1 do
       begin
-        if CompareTime(Now, PlaybackSchedule[i].ScheduledTime) <= 0 then
+        if CompareTime(ReportTime, ReportSchedule[i].ScheduledTime) <= 0 then
           begin
-            ReportHTML.Append(HTMLSafe(FormatDateTime('hh:nn AM/PM', PlaybackSchedule[i].ScheduledTime) +
-        ' - ' + ExtractFileName(PlaybackSchedule[i].SongPath)) + '<br>');
+            ReportHTML.Append(HTMLSafe(FormatDateTime('hh:nn AM/PM', ReportSchedule[i].ScheduledTime) +
+        ' - ' + ExtractFileName(ReportSchedule[i].SongPath)) + '<br>');
             Inc(DisplayCount);
         if (DisplayCount mod 5 = 0) then ReportHTML.Append('<br>');
           end;
@@ -968,6 +987,7 @@ ReportHTML.Append('</div>');
     ReportHTML.Append('</body></html>');
     SendEmailIfEnabled(ReportHTML.ToString, Recipients);
   finally
+    ReportSchedule.Free;
     ReportHTML.Free;
     LogLines.Free;
     RecentPlays.Free;

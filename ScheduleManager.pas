@@ -26,7 +26,8 @@ type
 
 procedure BuildPlaybackSchedule(const APlaylistDataSet: TDataSet;
   const ASchedule: TList<TScheduleEntry>; var ANextScheduleEntryId: Integer;
-  const ASilencePredicate: TScheduleSilencePredicate);
+  const ASilencePredicate: TScheduleSilencePredicate;
+  const AIncludePastEvents: Boolean = False);
 
 implementation
 
@@ -35,7 +36,8 @@ uses
 
 procedure BuildPlaybackSchedule(const APlaylistDataSet: TDataSet;
   const ASchedule: TList<TScheduleEntry>; var ANextScheduleEntryId: Integer;
-  const ASilencePredicate: TScheduleSilencePredicate);
+  const ASilencePredicate: TScheduleSilencePredicate;
+  const AIncludePastEvents: Boolean);
 var
   CurrentDate: TDateTime;
   CurrentTime: TDateTime;
@@ -95,8 +97,9 @@ begin
           begin
             TimeField := 'scheduled_time' + IntToStr(I);
             if not APlaylistDataSet.FieldByName(TimeField).IsNull then
-              if CompareTime(APlaylistDataSet.FieldByName(TimeField).AsDateTime,
-                CurrentTime) >= 0 then
+              if AIncludePastEvents or
+                (CompareTime(APlaylistDataSet.FieldByName(TimeField).AsDateTime,
+                CurrentTime) >= 0) then
               begin
                 ScheduleEntry.NumberOfTimesToPlay :=
                   APlaylistDataSet.FieldByName('num_times_to_play').AsInteger;
