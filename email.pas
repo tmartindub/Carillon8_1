@@ -278,45 +278,44 @@ begin
 end;
 function TryParseDurationToSeconds(const S: string; out Secs: Int64): Boolean;
 var
-  T: TDateTime;
   Parts: TArray<string>;
   H, M, Se: Int64;
+  Part: string;
+  Digit: Char;
 begin
   Result := False;
   Secs := 0;
-  if S.Trim = '' then Exit;
-  // Try Delphi time parsing first
-  if TryStrToTime(S, T) then
-  begin
-    Secs := Round(T * 86400);
-    Exit(True);
-  end;
-  // Try simple "mm:ss" or "hh:mm:ss"
+  // Durations are mm:ss or hh:mm:ss, never locale-dependent clock times.
   Parts := S.Trim.Split([':']);
-  try
-    if Length(Parts) = 2 then
-    begin
-      M := StrToIntDef(Parts[0], -1);
-      Se := StrToIntDef(Parts[1], -1);
-      if (M >= 0) and (Se >= 0) then
-      begin
-        Secs := M*60 + Se;
-        Exit(True);
-      end;
-    end
-    else if Length(Parts) = 3 then
-    begin
-      H := StrToIntDef(Parts[0], -1);
-      M := StrToIntDef(Parts[1], -1);
-      Se := StrToIntDef(Parts[2], -1);
-      if (H >= 0) and (M >= 0) and (Se >= 0) then
-      begin
-        Secs := H*3600 + M*60 + Se;
-        Exit(True);
-      end;
-    end;
-  except
+  if (Length(Parts) <> 2) and (Length(Parts) <> 3) then
+    Exit;
+  for Part in Parts do
+  begin
+    if Part = '' then
+      Exit;
+    for Digit in Part do
+      if not CharInSet(Digit, ['0'..'9']) then
+        Exit;
   end;
+  if not TryStrToInt64(Parts[High(Parts)], Se) or (Se > 59) then
+    Exit;
+  if not TryStrToInt64(Parts[High(Parts) - 1], M) then
+    Exit;
+  if Length(Parts) = 2 then
+  begin
+    if M > (High(Int64) - Se) div 60 then
+      Exit;
+    Secs := M * 60 + Se;
+  end
+  else
+  begin
+    if (M > 59) or not TryStrToInt64(Parts[0], H) then
+      Exit;
+    if H > (High(Int64) - M * 60 - Se) div 3600 then
+      Exit;
+    Secs := H * 3600 + M * 60 + Se;
+  end;
+  Result := True;
 end;
 function SecondsToHMS(const Secs: Int64): string;
 var
