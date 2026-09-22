@@ -29,7 +29,7 @@ begin
     Lines.Add(TodayText + ' 00:03:00 - Application initialized');
     Lines.SaveToFile(CarillonLogFilePath);
     Check('Restore legacy plays across restart', ReadCarillonPlayCount(Date), 2);
-    Check('Yesterday isolated from today', ReadCarillonPlayCount(Date - 1), 38);
+    Check('Yesterday counts plays and ignores old checkpoints', ReadCarillonPlayCount(Date - 1), 1);
     Lines.Add(TodayText + ' 00:04:00 - Played Song: third.mp3');
     Lines.Add(TodayText + ' 00:04:00 - Daily play count checkpoint: 3');
     Lines.Add(TodayText + ' 00:05:00 - Total Songs played yesterday: 38');
@@ -40,13 +40,13 @@ begin
     Lines.Add(TodayText + ' 00:06:00 - Daily play count checkpoint: 4');
     Lines.Add(TodayText + ' 00:07:00 - Application initialized');
     Lines.SaveToFile(CarillonLogFilePath);
-    Check('Logging disabled preserves checkpoint on restart', ReadCarillonPlayCount(Date), 4);
+    Check('Checkpoint without recorded play is ignored', ReadCarillonPlayCount(Date), 3);
     Lines.Add(TodayText + ' 00:08:00 - Played Song: fifth.mp3');
     Lines.Add(TodayText + ' 00:08:00 - Daily play count checkpoint: 5');
     Lines.Add(TodayText + ' 00:09:00 - Daily play count checkpoint: invalid');
     Lines.Add(TodayText + ' 00:09:00 - Daily play count checkpoint: -1');
     Lines.SaveToFile(CarillonLogFilePath);
-    Check('Logging re-enabled and invalid checkpoints', ReadCarillonPlayCount(Date), 5);
+    Check('Only recorded plays count, ignoring all checkpoints', ReadCarillonPlayCount(Date), 4);
     Check('Unrelated date returns zero', ReadCarillonPlayCount(Date + 1), 0);
   finally Lines.Free end;
 end;

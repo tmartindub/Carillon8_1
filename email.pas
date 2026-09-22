@@ -929,6 +929,7 @@ ReportHTML.Append('</div>');
     // Yesterday summary
     ReportHTML.Append('<div class="section">Yesterday Play Summary</div>');
     ReportHTML.Append('&bull; Total Songs Played Yesterday: ' + IntToStr(YesterdayCount) + '<br>');
+    ReportHTML.Append('Daily totals are based on recorded playback entries. Plays made while playback logging was disabled cannot be recovered after a restart.<br>');
     // Daily maintenance activity (previous day + early-morning reset) - LIMITED TO LAST 10
     ReportHTML.Append('<div class="section">Daily Maintenance Activity (Last 10)</div>');
     ReportHTML.Append('<div class="mono">');

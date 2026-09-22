@@ -82,7 +82,6 @@ var
   Lines: TStringList;
   Line, MessageText: string;
   Stamp: TDateTime;
-  SavedCount: Integer;
 begin
   Result := 0;
   if not FileExists(CarillonLogFilePath) then
@@ -96,11 +95,7 @@ begin
       begin
         MessageText := Copy(Line, Pos(' - ', Line) + 3, MaxInt);
         if MessageText.StartsWith('Played Song: ') then
-          Inc(Result)
-        else if MessageText.StartsWith('Daily play count checkpoint: ') and
-          TryStrToInt(Copy(MessageText, Length('Daily play count checkpoint: ') + 1,
-            MaxInt), SavedCount) and (SavedCount >= 0) then
-          Result := SavedCount;
+          Inc(Result);
       end;
   finally
     Lines.Free;

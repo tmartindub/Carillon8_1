@@ -2347,7 +2347,6 @@ begin
     FPlayedSongCountDate := Date;
   end;
   Inc(FPlayedSongCountToday);
-  AddToLog('Daily play count checkpoint: ' + IntToStr(FPlayedSongCountToday));
   UpdateStatusBar(ASongPath);
   Application.ProcessMessages;
 end;
