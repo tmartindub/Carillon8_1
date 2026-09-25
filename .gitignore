@@ -7,6 +7,7 @@
 *.map
 *.rsm
 *.tds
+*.dmp
 *.identcache
 *.local
 *.stat
@@ -27,6 +28,7 @@ Win32/
 Win64/
 Debug/
 Release/
+logs/
 
 # Installer/export output
 Exports/

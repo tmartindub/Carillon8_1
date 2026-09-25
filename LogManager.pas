@@ -9,11 +9,80 @@ function ReadCarillonPlayCount(const ADate: TDateTime): Integer;
 function TryParseCarillonLogLineDateTime(const ALine: string;
   out AValue: TDateTime): Boolean;
 procedure TrimCarillonPlayLog(const ADaysToKeep: Integer = 30);
+procedure InitializeCarillonPlaybackDiagnostics;
+procedure TraceCarillonPlayback(const AMessage: string);
 
 implementation
 
 uses
-  System.Classes, System.DateUtils, System.IOUtils, System.SysUtils;
+  System.Classes, System.DateUtils, System.IOUtils, System.SysUtils,
+  Winapi.Windows;
+
+var
+  PlaybackDiagnosticFileName: string;
+
+procedure TraceCarillonPlayback(const AMessage: string);
+var
+  DiagnosticStream: TFileStream;
+  DiagnosticBytes: TBytes;
+begin
+  if PlaybackDiagnosticFileName = '' then
+    Exit;
+  try
+    DiagnosticBytes := TEncoding.UTF8.GetBytes(Format(
+      '%s [pid=%d thread=%d tick=%d] %s',
+      [FormatDateTime('yyyy-mm-dd hh:nn:ss.zzz', Now, TFormatSettings.Invariant),
+       GetCurrentProcessId, GetCurrentThreadId, GetTickCount64, AMessage]) + sLineBreak);
+    if FileExists(PlaybackDiagnosticFileName) then
+      DiagnosticStream := TFileStream.Create(PlaybackDiagnosticFileName,
+        fmOpenReadWrite or fmShareDenyWrite)
+    else
+      DiagnosticStream := TFileStream.Create(PlaybackDiagnosticFileName,
+        fmCreate or fmShareDenyWrite);
+    try
+      DiagnosticStream.Seek(0, soEnd);
+      DiagnosticStream.WriteBuffer(DiagnosticBytes[0], Length(DiagnosticBytes));
+      // Fail-fast bypasses Delphi handlers, so persist each stage before continuing.
+      if not FlushFileBuffers(DiagnosticStream.Handle) then
+        OutputDebugString('Carillon playback diagnostic flush failed.');
+    finally
+      DiagnosticStream.Free;
+    end;
+  except
+    // Diagnostics must not prevent playback if the USB is full or unwritable.
+    OutputDebugString('Carillon playback diagnostic write failed.');
+  end;
+end;
+
+procedure InitializeCarillonPlaybackDiagnostics;
+var
+  DiagnosticDirectory: string;
+begin
+  PlaybackDiagnosticFileName := '';
+  try
+    DiagnosticDirectory := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0))) +
+      'logs' + PathDelim + 'diagnostics';
+    if not ForceDirectories(DiagnosticDirectory) then
+      Exit;
+    PlaybackDiagnosticFileName := IncludeTrailingPathDelimiter(DiagnosticDirectory) +
+      'CarillonPlayback-' + FormatDateTime('yyyymmdd-hhnnss-zzz', Now) + '-' +
+      UIntToStr(GetCurrentProcessId) + '.log';
+    TraceCarillonPlayback('diagnostics.start revision=2026-09-25 executable=' + ParamStr(0));
+    {$IFDEF WIN64}
+    TraceCarillonPlayback('build.platform=Win64');
+    {$ELSE}
+    TraceCarillonPlayback('build.platform=Win32');
+    {$ENDIF}
+    {$IFDEF DEBUG}
+    TraceCarillonPlayback('build.configuration=Debug');
+    {$ELSE}
+    TraceCarillonPlayback('build.configuration=Release');
+    {$ENDIF}
+  except
+    PlaybackDiagnosticFileName := '';
+    OutputDebugString('Carillon playback diagnostics could not be initialized.');
+  end;
+end;
 
 function TryParseLogTimestamp(const AText: string; out AValue: TDateTime): Boolean;
 var

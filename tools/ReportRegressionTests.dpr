@@ -50,6 +50,38 @@ begin
     Check('Unrelated date returns zero', ReadCarillonPlayCount(Date + 1), 0);
   finally Lines.Free end;
 end;
+procedure TestPlaybackDiagnostics;
+var
+  DiagnosticDirectory, PlayLogBefore, TraceText: string;
+  DiagnosticFiles: TArray<string>;
+  LockedTrace: TFileStream;
+begin
+  PlayLogBefore := TFile.ReadAllText(CarillonLogFilePath);
+  TraceCarillonPlayback('before initialization');
+  InitializeCarillonPlaybackDiagnostics;
+  DiagnosticDirectory := TPath.Combine(ExtractFileDir(CarillonLogFilePath), 'diagnostics');
+  DiagnosticFiles := TDirectory.GetFiles(DiagnosticDirectory, 'CarillonPlayback-*.log');
+  Check('One diagnostic file per test session', Length(DiagnosticFiles), 1);
+  TraceCarillonPlayback('test.stage.begin');
+  TraceCarillonPlayback('test.utf8=' + Char($00E9));
+  TraceText := TFile.ReadAllText(DiagnosticFiles[0], TEncoding.UTF8);
+  Check('Diagnostic start marker persisted', Ord(Pos('diagnostics.start', TraceText) > 0), 1);
+  Check('Stage marker persisted immediately', Ord(Pos('test.stage.begin', TraceText) > 0), 1);
+  Check('Trace preserves Unicode paths', Ord(Pos('test.utf8=' + Char($00E9), TraceText) > 0), 1);
+  Check('Trace identifies executable', Ord(Pos(ParamStr(0), TraceText) > 0), 1);
+  LockedTrace := TFileStream.Create(DiagnosticFiles[0], fmOpenReadWrite or fmShareExclusive);
+  try
+    TraceCarillonPlayback('test.locked-write');
+  finally
+    LockedTrace.Free;
+  end;
+  TraceCarillonPlayback('test.recovered');
+  TraceText := TFile.ReadAllText(DiagnosticFiles[0], TEncoding.UTF8);
+  Check('Locked diagnostic file does not raise or write', Ord(Pos('test.locked-write', TraceText) > 0), 0);
+  Check('Trace recovers after file unlock', Ord(Pos('test.recovered', TraceText) > 0), 1);
+  Check('Diagnostics leave play log unchanged', Ord(TFile.ReadAllText(CarillonLogFilePath) = PlayLogBefore), 1);
+  Check('Diagnostics do not affect song counts', ReadCarillonPlayCount(Date), 4);
+end;
 procedure TestSchedules;
 const Days: array[1..7] of string = ('monday','tuesday','wednesday','thursday','friday','saturday','sunday');
 var Data: TFDMemTable; ReportItems, PlaybackItems: TList<TScheduleEntry>;
@@ -113,6 +145,7 @@ end;
 begin
   try
     TestCounts;
+    TestPlaybackDiagnostics;
     TestSchedules;
   except
     on E: Exception do begin Writeln('FAIL ', E.Message); Halt(1) end;

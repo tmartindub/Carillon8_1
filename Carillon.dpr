@@ -47,6 +47,8 @@ begin
   end;
 
   try
+    InitializeCarillonPlaybackDiagnostics;
+    TraceCarillonPlayback('application.initialize.begin');
     // ReportMemoryLeaksOnShutdown := True; // Disabled to avoid leak popups during forced Windows shutdown.
     Application.Initialize;
 
@@ -73,8 +75,11 @@ begin
     Application.CreateForm(TfrmEmailSettings, frmEmailSettings);
     Application.CreateForm(TfrmRandomDirectory, frmRandomDirectory);
 
+    TraceCarillonPlayback('application.run.begin');
     Application.Run;
+    TraceCarillonPlayback('application.run.returned');
   finally
+    TraceCarillonPlayback('application.cleanup');
     // Release the lock on exit
     if LockHandle <> INVALID_HANDLE_VALUE then
       CloseHandle(LockHandle);

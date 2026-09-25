@@ -2305,10 +2305,15 @@ begin
     end;
     ASongPath := Files[Random(Files.Count)];
     try
+      TraceCarillonPlayback('random.duration.open.begin song=' + ASongPath);
       MP3MediaPlayer.FileName := ASongPath;
+      TraceCarillonPlayback('random.duration.open.end');
       FCurrentSongDurationSeconds := Round(MP3MediaPlayer.Duration / MediaTimeScale);
+      TraceCarillonPlayback('random.duration.clear.begin');
       MP3MediaPlayer.Clear;
+      TraceCarillonPlayback('random.duration.clear.end');
     except
+      TraceCarillonPlayback('random.duration.exception');
       FCurrentSongDurationSeconds := 0;
     end;
   finally
@@ -2326,16 +2331,22 @@ end;
 procedure TfmDailyPlayList.ShowNowPlaying(const ASongPath: string;
   const AResolveDurationFromPlaylist: Boolean);
 begin
+  TraceCarillonPlayback('player.open.begin song=' + ASongPath);
   MP3MediaPlayer.FileName := ASongPath;
+  TraceCarillonPlayback('player.open.end');
   FNowPlayingCaptionBase := 'Now Playing: ' + ExtractFileName(ASongPath);
   lblRandSongPlaying.Text := FNowPlayingCaptionBase;
   if AResolveDurationFromPlaylist then
     ResolveSongDurationFromPlaylist
   else
     try
+      TraceCarillonPlayback('player.duration.begin');
       FCurrentSongDurationSeconds := Round(MP3MediaPlayer.Duration / MediaTimeScale);
+      TraceCarillonPlayback('player.duration.clear.begin');
       MP3MediaPlayer.Clear;
+      TraceCarillonPlayback('player.duration.clear.end');
     except
+      TraceCarillonPlayback('player.duration.exception');
       FCurrentSongDurationSeconds := 0;
     end;
   StopNowPlayingCountdown;
@@ -2348,7 +2359,9 @@ begin
   end;
   Inc(FPlayedSongCountToday);
   UpdateStatusBar(ASongPath);
+  TraceCarillonPlayback('player.prepare.messages.begin');
   Application.ProcessMessages;
+  TraceCarillonPlayback('player.prepare.messages.end');
 end;
 procedure TfmDailyPlayList.HideNowPlaying;
 begin
@@ -2398,32 +2411,40 @@ var
   SongPath: string;
   UsePlaylistDuration: Boolean;
 begin
+  TraceCarillonPlayback('schedule.entry.begin song=' + AEntry.SongPath +
+    ' repeats=' + IntToStr(AEntry.NumberOfTimesToPlay));
   SongPath := AEntry.SongPath;
   UsePlaylistDuration := TrySyncDataSetToScheduledEntry(AEntry);
+  TraceCarillonPlayback('schedule.lookup.end playlistDuration=' + BoolToStr(UsePlaylistDuration, True));
   ResolveRandomSongIfNeeded(SongPath);
   if Assigned(SettingsMain) and SettingsMain.chkLogOnOff.IsChecked then
     AddToLog('Played Song: ' + SongPath);
   if not FileExists(SongPath) then
   begin
+    TraceCarillonPlayback('schedule.file.missing song=' + SongPath);
     ShowMessage('File not found: ' + SongPath);
     Exit;
   end;
   ShowNowPlaying(SongPath, UsePlaylistDuration);
   PlaySongRepeats(AEntry.NumberOfTimesToPlay);
   HideNowPlaying;
+  TraceCarillonPlayback('schedule.entry.end');
 end;
 procedure TfmDailyPlayList.PlaySongRepeats(ANumberOfTimes: Integer);
 var
   RepeatIndex: Integer;
 begin
   IsPlaybackInProgress := True;
+  TraceCarillonPlayback('player.repeats.begin count=' + IntToStr(ANumberOfTimes));
   try
     for RepeatIndex := 1 to ANumberOfTimes do
     begin
       if FGeneratedShuttingDown or Application.Terminated then
         Break;
 
+      TraceCarillonPlayback('player.play.begin repeat=' + IntToStr(RepeatIndex));
       MP3MediaPlayer.Play;
+      TraceCarillonPlayback('player.play.returned');
       while (MP3MediaPlayer.State <> TMediaState.Playing) and
             (MP3MediaPlayer.State <> TMediaState.Stopped) do
       begin
@@ -2458,9 +2479,11 @@ begin
         Application.ProcessMessages;
         Sleep(100);
       end;
+      TraceCarillonPlayback('player.repeat.ended repeat=' + IntToStr(RepeatIndex));
     end;
   finally
     IsPlaybackInProgress := False;
+    TraceCarillonPlayback('player.repeats.finally');
   end;
 end;
 function TfmDailyPlayList.IsSongAlreadyInDailyPlaylist(
@@ -4402,6 +4425,7 @@ begin
   if FGeneratedShuttingDown or Application.Terminated then
     Exit;
 
+  TraceCarillonPlayback('player.notify.enter busy=' + BoolToStr(IsPlaybackInProgress, True));
   RetryCount := 0;
   // Wait up to 3 seconds for the player to fully stop
   while (MP3MediaPlayer.State <> TMediaState.Stopped) and (RetryCount < 3) do
@@ -4414,9 +4438,12 @@ begin
   // Reset Player
   if MP3MediaPlayer.State = TMediaState.Stopped then
   begin
+    TraceCarillonPlayback('player.notify.clear.begin');
     MP3MediaPlayer.Clear;
+    TraceCarillonPlayback('player.notify.clear.end');
     IsPlaybackInProgress := False;
   end;
+  TraceCarillonPlayback('player.notify.exit');
 end;
 procedure TfmDailyPlayList.OpenDialog1Show(Sender: TObject);
 begin
