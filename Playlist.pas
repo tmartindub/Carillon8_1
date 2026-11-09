@@ -197,7 +197,7 @@ type
     procedure ReturnToPlaylistClick(Sender: TObject);
     procedure edPLPlayDateToExit(Sender: TObject);
     procedure PlaySelectedSong;
-    procedure RefreshGrid;
+    procedure RefreshGrid(const APreserveSelection: Boolean = False);
     procedure CenterForm(AForm: TForm);
     procedure CompileSchedule;
     procedure ShowSchedule;
@@ -3161,9 +3161,12 @@ begin
     Exit;
   if FPlaylistEditSchedulePaused then
   begin
-    FPlaylistEditSchedulePaused := False;
-    GeneratedSetToggleState_chkEnableSchedule(True);
-    chkEnableScheduleClick(Self);
+    try
+      GeneratedSetToggleState_chkEnableSchedule(True);
+      chkEnableScheduleClick(Self);
+    finally
+      FPlaylistEditSchedulePaused := False;
+    end;
   end;
 end;
 procedure TfmDailyPlayList.PlaySelectedSong;
@@ -3280,7 +3283,7 @@ begin
 end;
 procedure TfmDailyPlayList.PlaylistQueryAfterPost(DataSet: TDataSet);
 begin
-  RefreshGrid;
+  RefreshGrid(True);
   UpdateStatusBar('');
   EndPlaylistEditSession;
 end;
@@ -3831,20 +3834,63 @@ begin
     Exit;
   AudioManager.ToggleMute;
 end;
-procedure TfmDailyPlayList.RefreshGrid;
+procedure TfmDailyPlayList.RefreshGrid(const APreserveSelection: Boolean);
+var
+  HasSelectedRecord: Boolean;
+  SelectedPlaylistName: string;
+  SelectedSongName: string;
+  SavedTopRow: Integer;
 begin
-  FSkipNextPlaylistGridSelectionSync := True;
-  PlaylistQuery.DisableControls;
-  try
-    PlaylistQuery.close;
-    PlaylistQuery.SQL.Text := 'SELECT * FROM playlist ORDER BY season, song_name';
-    // Ensure the dataset is sorted
-    PlaylistQuery.Open;
-  GeneratedSyncManualFieldBindingsForDataSet(PlaylistQuery);
-  finally
-    PlaylistQuery.EnableControls;
+  HasSelectedRecord := APreserveSelection and PlaylistQuery.Active and
+    not PlaylistQuery.IsEmpty;
+  SavedTopRow := 0;
+  if APreserveSelection and Assigned(DBGrid1) then
+    SavedTopRow := DBGrid1.TopRow;
+  if HasSelectedRecord then
+  begin
+    SelectedPlaylistName := PlaylistQuery.FieldByName('playlist_name').AsString;
+    SelectedSongName := PlaylistQuery.FieldByName('song_name').AsString;
   end;
-  if Assigned(FPlaylistBindSource) and Assigned(FPlaylistBindSource.DataSource) and Assigned(FPlaylistBindSource.DataSource.DataSet) then FPlaylistBindSource.DataSource.DataSet.First;
+
+  FSkipNextPlaylistGridSelectionSync := not APreserveSelection;
+  if APreserveSelection then
+    Inc(FPlaylistGridRebuildDepth);
+  try
+    PlaylistQuery.DisableControls;
+    try
+      PlaylistQuery.Close;
+      PlaylistQuery.SQL.Text := 'SELECT * FROM playlist ORDER BY season, song_name';
+      PlaylistQuery.Open;
+      if HasSelectedRecord then
+      begin
+        // Reopening invalidates the bookmark; use the record's database key.
+        while not PlaylistQuery.Eof do
+        begin
+          if (PlaylistQuery.FieldByName('playlist_name').AsString = SelectedPlaylistName) and
+             (PlaylistQuery.FieldByName('song_name').AsString = SelectedSongName) then
+            Break;
+          PlaylistQuery.Next;
+        end;
+        if PlaylistQuery.Eof then
+          PlaylistQuery.First;
+      end;
+      GeneratedSyncManualFieldBindingsForDataSet(PlaylistQuery);
+    finally
+      PlaylistQuery.EnableControls;
+    end;
+  finally
+    if APreserveSelection then
+      Dec(FPlaylistGridRebuildDepth);
+  end;
+
+  if APreserveSelection then
+  begin
+    SyncPlaylistGridSelectionFromDataSet(False);
+    ScrollPlaylistGridRowToTop(SavedTopRow);
+  end
+  else if Assigned(FPlaylistBindSource) and Assigned(FPlaylistBindSource.DataSource) and
+    Assigned(FPlaylistBindSource.DataSource.DataSet) then
+    FPlaylistBindSource.DataSource.DataSet.First;
 end;
 procedure TfmDailyPlayList.CenterForm(AForm: TForm);
 begin
@@ -3857,7 +3903,8 @@ begin
 end;
 procedure TfmDailyPlayList.chkEnableScheduleClick(Sender: TObject);
 begin
-  ResetPlaylistGridToStartupState;
+  if not FPlaylistEditSchedulePaused then
+    ResetPlaylistGridToStartupState;
   if chkEnableSchedule.IsChecked then
   begin
     UpdatePlaylistFromSeasonalGroups;
@@ -3868,8 +3915,13 @@ begin
     IsPlaybackInProgress := False;
     lblScheduleStatus.Text := 'Schedule enabled';
     ApplyScheduleStatusTheme;
-    UpdateFieldStatesForAllRecords;
+    if FPlaylistEditSchedulePaused then
+      UpdateFieldStateBasedOnSeasonalGroup
+    else
+      UpdateFieldStatesForAllRecords;
     AddToLog('Scheduled enabled');
+    if FPlaylistEditSchedulePaused then
+      Exit;
     if StartPlaylistGroupsClosed then
     begin
       RebuildPlaylistGrid;
@@ -3893,8 +3945,11 @@ begin
     lblScheduleStatus.Text := 'Schedule disabled';
     ApplyScheduleStatusTheme;
     AddToLog('Scheduled disabled');
-    RebuildPlaylistGrid;
-    SyncPlaylistGridSelectionFromDataSet(False);
+    if not FPlaylistEditSchedulePaused then
+    begin
+      RebuildPlaylistGrid;
+      SyncPlaylistGridSelectionFromDataSet(False);
+    end;
     if Assigned(DBGrid1) then
       DBGrid1.Repaint;
   end;
@@ -4544,11 +4599,16 @@ begin
     ADOQuery1.close;
     ADOQuery2.close;
     PlaylistQuery.EnableControls;
-    // Refresh the DBGrid by closing and reopening the query that populates the grid
-    FSkipNextPlaylistGridSelectionSync := True;
-    PlaylistQuery.close;
-    PlaylistQuery.Open;
-  GeneratedSyncManualFieldBindingsForDataSet(PlaylistQuery);
+    if FPlaylistEditSchedulePaused then
+      RefreshGrid(True)
+    else
+    begin
+      // Reload dates and times updated by the seasonal group rules.
+      FSkipNextPlaylistGridSelectionSync := True;
+      PlaylistQuery.Close;
+      PlaylistQuery.Open;
+      GeneratedSyncManualFieldBindingsForDataSet(PlaylistQuery);
+    end;
   end;
 end;
 procedure TfmDailyPlayList.ToggleFieldsEnabledState(Enabled: Boolean);
