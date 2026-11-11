@@ -1,0 +1,57 @@
+{
+  "releaseTag": "v8.1.0",
+  "sourceCommit": "c424f91dc5d1faf902d1dded31eb53d0ff181fd2",
+  "publishedDate": "2026-11-11",
+  "builds": [
+    {
+      "platform": "Win32",
+      "configuration": "Debug",
+      "path": "bin/Win32/Debug/Carillon.exe",
+      "sha256": "1c5e3d67e642cb22ae01ac472b2ddaae5a40c92944509531fb4a4eb34f020da8"
+    },
+    {
+      "platform": "Win32",
+      "configuration": "Release",
+      "path": "bin/Win32/Release/Carillon.exe",
+      "sha256": "222bd930ad812afaa8dea96eddce6c16655734ef2094f313e6cf2eabbdc991dd"
+    },
+    {
+      "platform": "Win64",
+      "configuration": "Debug",
+      "path": "bin/Win64/Debug/Carillon.exe",
+      "sha256": "0edcd58eb80ef5a71438d22f8f9dfed72c3c8f6681c8fbcc4a38c3ef8905722c"
+    },
+    {
+      "platform": "Win64",
+      "configuration": "Release",
+      "path": "bin/Win64/Release/Carillon.exe",
+      "sha256": "232fca33fa604147d011112fa2a4a47c79ee119021d4a2cea47e22d07416e5f2"
+    }
+  ],
+  "packages": [
+    {
+      "name": "CarillonBells_8_1_Portable_Full.zip",
+      "sha256": "9a2766666bf321c6dea00a89c749748f0da2fb3f4f177dac82ea503e0f2533d7",
+      "size": 256746479,
+      "programEntry": "CarillonBells_8_1_Portable_Full/Carillon.exe",
+      "verifiedEntries": 249,
+      "programSHA256": "222bd930ad812afaa8dea96eddce6c16655734ef2094f313e6cf2eabbdc991dd"
+    },
+    {
+      "name": "CarillonBells_7_2_4_to_8_1_Upgrade.zip",
+      "sha256": "c9b8f7c4d2fb4e661ddd79be0f8ade315a94b220f9003d3dcda3612d7f1b06f6",
+      "size": 19747540,
+      "programEntry": "CarillonBells_7_2_4_to_8_1_Upgrade\\Carillon.exe",
+      "verifiedEntries": 14,
+      "programSHA256": "222bd930ad812afaa8dea96eddce6c16655734ef2094f313e6cf2eabbdc991dd"
+    },
+    {
+      "name": "CarillonBells_8_1_Executable_Update.zip",
+      "sha256": "418c553820ff4ace8aa2acccf02b488178fcd821eb883dfc1294e54acbc07d42",
+      "size": 14860410,
+      "programEntry": "CarillonBells_8_1_Executable_Update/Carillon.exe",
+      "verifiedEntries": 14,
+      "programSHA256": "222bd930ad812afaa8dea96eddce6c16655734ef2094f313e6cf2eabbdc991dd"
+    }
+  ]
+}
